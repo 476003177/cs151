@@ -1,0 +1,12 @@
+Your name: Tyler Wasniowski
+Your student ID: 011197745
+Your major: Computer Science
+Your preferred email address: TylerWasniowski@gmail.com
+Check one: [X] Undergraduate, [ ] Graduate, [ ] Open university 
+Repeating the class? [ ] Yes, [X] No
+Place and semester where you took a programming course in Java: Prospect High School Senior Year
+Course number and grade received: AP Computer Science, A+  5/5 on AP Test
+Place and semester where you took a course in data structures: SJSU Fall 2016
+Course number and grade received: CS 46B, A+
+Time it took you to answer the two questions below:
+Did you ask anyone for help? [ ] Yes, [X] No
