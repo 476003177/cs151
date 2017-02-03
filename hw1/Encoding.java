@@ -3,8 +3,7 @@ import java.util.TreeSet;
 
 public class Encoding {
 
-    public static Set<String> morseCodes(int m, int n)
-    {
+    public static Set<String> morseCodes(int m, int n) {
         Set<String> result = new TreeSet<>();
         Set<String> subPermutations;
 
@@ -31,5 +30,8 @@ public class Encoding {
         return result;
     }
 
+    public static void main(String[] args) {
+        morseCodes(3,2);
+    }
 
 }
