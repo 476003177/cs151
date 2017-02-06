@@ -6,3 +6,6 @@ Book Code 5) Outside, because it was cloned in a different directory.
 Book Code 6) In the Documents directory.
 
 The Lab Code 3) Connection.java, Mailbox.java, MailSystem.java, MailSystemTester.java, Message.java, MessageQueue.java, semantic.cache, Telephone.java
+The Lab Code 5) With the command git add lab2
+
+Eclipse 3) 
