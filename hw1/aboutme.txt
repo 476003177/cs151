@@ -8,5 +8,5 @@ Place and semester where you took a programming course in Java: Prospect High Sc
 Course number and grade received: AP Computer Science, A+  5/5 on AP Test
 Place and semester where you took a course in data structures: SJSU Fall 2016
 Course number and grade received: CS 46B, A+
-Time it took you to answer the two questions below:
+Time it took you to answer the two questions below: 35 minutes
 Did you ask anyone for help? [ ] Yes, [X] No
