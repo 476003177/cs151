@@ -5,7 +5,6 @@ public class Encoding {
 
     public static Set<String> morseCodes(int m, int n) {
         Set<String> result = new TreeSet<>();
-        Set<String> subPermutations;
 
         if (m == 1 && n <= 0) {
             result.add(".");
@@ -16,6 +15,7 @@ public class Encoding {
             return result;
         }
 
+        Set<String> subPermutations;
         if (m >= 1) {
             subPermutations = morseCodes(m - 1, n);
             for (String str: subPermutations)
