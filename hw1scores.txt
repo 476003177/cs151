@@ -1,0 +1,61 @@
+Student: wasniowski_tyler
+Git submission (max 4): 4
+Git repo private (max 4): 4
+Submitted into (root)/hw1/* (max 4): 4
+Plain text aboutme.txt (max 4): 4
+Lists passes (max 8): 8
+Encodings passes (max 8): 8
+ 
+2
+0
+1
+4
+[5, 4, 1, 2, 9, 6]
+Expected: [5, 4, 1, 2, 9, 6]
+0
+1
+4
+[1, 4, 1, 2, 9, 6]
+Expected: [1, 4, 1, 2, 9, 6]
+0
+1
+2
+[1, 4, 9, 2, 2, 6]
+Expected: [1, 4, 9, 2, 2, 6]
+2
+0
+1
+[4, 9, 2, 9, 4, 6]
+Expected: [4, 9, 2, 9, 4, 6]
+0
+1
+[1, 4, 1, 4, 1, 4]
+Expected: [1, 4, 1, 4, 1, 4]
+0
+[1, 1, 1, 1, 1, 1]
+Expected: [1, 1, 1, 1, 1, 1]
+0
+[1]
+Expected: [1]
+[-.., .-., ..-]
+[-.., .-., ..-]
+true
+[---.., --.-., --..-, -.--., -.-.-, -..--, .---., .--.-, .-.--, ..---]
+[---.., --.-., --..-, -.--., -.-.-, -..--, .---., .--.-, .-.--, ..---]
+true
+[--...., -.-..., -..-.., -...-., -....-, .--..., .-.-.., .-..-., .-...-, ..--.., ..-.-., ..-..-, ...--., ...-.-, ....--]
+[--...., -.-..., -..-.., -...-., -....-, .--..., .-.-.., .-..-., .-...-, ..--.., ..-.-., ..-..-, ...--., ...-.-, ....--]
+true
+ 
+Your name: Tyler Wasniowski
+Your student ID: 011197745
+Your major: Computer Science
+Your preferred email address: TylerWasniowski@gmail.com
+Check one: [X] Undergraduate, [ ] Graduate, [ ] Open university 
+Repeating the class? [ ] Yes, [X] No
+Place and semester where you took a programming course in Java: Prospect High School Senior Year
+Course number and grade received: AP Computer Science, A+  5/5 on AP Test
+Place and semester where you took a course in data structures: SJSU Fall 2016
+Course number and grade received: CS 46B, A+
+Time it took you to answer the two questions below: 35 minutes
+Did you ask anyone for help? [ ] Yes, [X] No
