@@ -1,24 +1,24 @@
 Student: wasniowski_tyler
-All ok with git (grader added to repo, directory, filename) (max. 4): 
+All ok with git (grader added to repo, directory, filename) (max. 4): 4
 
 piazza.png
-A question has two answers (max. 2):
-A question has 0 or more followup discussions (max. 1):
-A followup discussion has 0 or more followup responses (max. 1):
-A Piazza simulation has 0 or more questions (max. 2):
-A followup discussion can be resolved (max. 1):
-A question can be good, an answer can be good (max. 1):
+A question has two answers (max. 2): 2
+A question has 0 or more followup discussions (max. 1): 0
+A followup discussion has 0 or more followup responses (max. 1): 0.5
+A Piazza simulation has 0 or more questions (max. 2): 0
+A followup discussion can be resolved (max. 1): 1
+A question can be good, an answer can be good (max. 1): 1
 A question, answer, post, followup discussion, and followup response
-have an author/updater/User (max. 2): 
+have an author/updater/User (max. 2): 0
 (This can be achieved by an attribute or aggregation with User,
 or if they inherit from a class with with such an attribute or
 aggregation.)
 
 change.png
-Three timelines for Telephone, Connection, Mailbox (max. 3):
-Colons before class names (: Telephone) (max. 1):
-dial/checkPasscode/speak as in solution (max. 2):
-dial/speak/record as in solution (max. 2): 
-dial/setGreeting as in solution (max. 2):
+Three timelines for Telephone, Connection, Mailbox (max. 3): 3
+Colons before class names (: Telephone) (max. 1): 1
+dial/checkPasscode/speak as in solution (max. 2): 2
+dial/speak/record as in solution (max. 2): 2
+dial/setGreeting as in solution (max. 2): 1
 (If the self calls aren't there, we let it go this time.)
 
