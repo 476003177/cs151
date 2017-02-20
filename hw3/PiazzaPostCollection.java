@@ -8,14 +8,13 @@ public class PiazzaPostCollection<V> {
 
     public PiazzaPostCollection() {
         emptySpots = new HashSet<>();
-        followupDiscussions = new HashMap<Integer, V>();
+        followupDiscussions = new HashMap<>();
     }
 
     public int add(V value) {
         int id = (emptySpots.isEmpty()) ? followupDiscussions.size() : emptySpots.iterator().next();
 
         followupDiscussions.put(id, value);
-
         return id;
     }
 

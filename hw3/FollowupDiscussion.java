@@ -3,20 +3,13 @@
  */
 public class FollowupDiscussion extends Post {
 
-    private String author;
-
     private boolean resolved;
 
     private PiazzaPostCollection<Post> replys;
 
     public FollowupDiscussion() {
-        author = "";
-
         resolved = false;
-    }
-
-    public String getAuthor() {
-        return author;
+        replys = new PiazzaPostCollection<>();
     }
 
     public boolean isResolved() {

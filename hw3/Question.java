@@ -18,14 +18,15 @@ public class Question extends Post {
 
     public Question() {
 
-        this.instructorAnswer = null;
-        this.studentAnswer = null;
+        this.instructorAnswer = new Answer();
+        this.studentAnswer = new Answer();
 
         this.good = false;
 
         this.views = 0;
 
-        this.followups = new PiazzaPostCollection();
+        this.followups = new PiazzaPostCollection<>();
+
     }
 
     public int add(FollowupDiscussion followupDiscussion) {

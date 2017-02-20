@@ -15,11 +15,13 @@ public class Post {
 
     public Post(User author, String text) {
         this.author = author;
-
+        this.lastUpdater = author;
         this.text = text;
     }
 
     public void update(User user, String text) {
+        if (this.author == null)
+            author = user;
         this.lastUpdater = user;
         this.text = text;
     }
