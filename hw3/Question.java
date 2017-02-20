@@ -1,4 +1,6 @@
-import java.util.TreeMap;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 /**
  * Created by Tyler on 2/15/2017.
@@ -12,7 +14,7 @@ public class Question extends Post {
 
     private int views;
 
-    private TreeMap<Integer, FollowupDiscussion> followups;
+    private PiazzaPostCollection<FollowupDiscussion> followups;
 
     public Question() {
 
@@ -23,10 +25,22 @@ public class Question extends Post {
 
         this.views = 0;
 
-        this.followups = new TreeMap<>();
+        this.followups = new PiazzaPostCollection();
     }
 
-    public int view(User u) {
+    public int add(FollowupDiscussion followupDiscussion) {
+        return followups.add(followupDiscussion);
+    }
+
+    public FollowupDiscussion getFollowup(int followupID) {
+        return followups.get(followupID);
+    }
+
+    public int getFollowupCount() {
+        return followups.size();
+    }
+
+    public int view(User user) {
         return ++views;
     }
 
@@ -44,14 +58,6 @@ public class Question extends Post {
 
     public Answer getStudentAnswer() {
         return studentAnswer;
-    }
-
-    public FollowupDiscussion getFollowup(int followupid) {
-        return followups.get(followupid);
-    }
-
-    public int getFollowupCount() {
-        return followups.size();
     }
 
 }
