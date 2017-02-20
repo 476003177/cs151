@@ -23,5 +23,8 @@ public class User {
         return role.equals(Type.INSTRUCTOR);
     }
 
+    public String toString() {
+        return username;
+    }
 
 }
