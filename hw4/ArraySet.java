@@ -26,6 +26,10 @@ public class ArraySet implements IntSet {
 
     @Override
     public void set(int n) {
+        // Don't store the same element twice
+        if (test(n))
+            return;
+
         ensureCapacity();
 
         int elIndex = (emptySpots.size() > 0) ? emptySpots.iterator().next() : elementCount++;
@@ -70,6 +74,11 @@ public class ArraySet implements IntSet {
                 return i;
 
         return -1;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(elements);
     }
 
 }
