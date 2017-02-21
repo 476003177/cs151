@@ -1,14 +1,13 @@
 import org.junit.*;
-import static org.junit.Assert.*;
 
 import java.util.Iterator;
 
-/**
- * Created by Rooke_000 on 2/20/2017.
- */
+import static org.junit.Assert.*;
+
 public class HashSetTest {
+
     @Test
-    public void test() {
+    public void test0() {
         HashSet set = new HashSet(10);
         set.add(1);
         set.add(7);
@@ -19,8 +18,30 @@ public class HashSetTest {
         assertEquals(1, iter.next());
     }
 
-    public static void main(String[] args) {
-        new HashSetTest().test();
+    @Test
+    public void test1() {
+        HashSet set = new HashSet(5);
+        set.add(0);
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.add(4);
+        Iterator iter = set.iterator();
+        assertEquals(0, iter.next());
+        assertEquals(1, iter.next());
+        assertEquals(2, iter.next());
+        assertEquals(3, iter.next());
+        assertEquals(4, iter.next());
+        assertFalse(iter.hasNext());
+        iter = set.iterator();
+        iter.next();
+        iter.remove();
+        iter = set.iterator();
+        assertEquals(1, iter.next());
+        assertEquals(2, iter.next());
+        assertEquals(3, iter.next());
+        assertEquals(4, iter.next());
+        assertFalse(iter.hasNext());
     }
 
 }
