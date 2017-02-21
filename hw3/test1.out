@@ -1,0 +1,79 @@
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+id=0
+
+OK
+
+OK
+text=How do I open a terminal window?
+good=true
+lastauthor=fred
+views=1
+
+OK
+
+OK
+text=How do I open a terminal window?
+good=true
+lastauthor=fred
+views=2
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+text=How do I open a terminal window in Lubuntu?
+good=true
+lastauthor=wilma
+views=3
+
+OK
+text=Hit Ctrl+Alt+T
+good=true
+lastauthor=wilma
+
+OK
+text=Or click on the bird icon and select Terminal from the menu
+good=false
+lastauthor=horstmann
+
+OK
+
+OK
+followupid=0
+
+OK
+text=Why do I need a terminal?
+author=bozotheclown
+resolved=false
+
+OK
+
+OK
+followupreplyid=0
+
+OK
+
+OK
+text=Why do I need a terminal?
+author=bozotheclown
+resolved=true
+
+OK
+text=So you can issue commands such as git pull
+author=wilma
+

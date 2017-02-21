@@ -1,0 +1,190 @@
+Student: wasniowski_tyler
+test1.in passes with empty diff (max 8): 
+test2.in passes with empty diff (max 8):
+No missing javadoc comments (max 4):
+(Ignore tab errors this time)
+At least 3 git checkins (max 4):
+ 
+test1.in
+ 
+test2.in
+72c72
+< views=3
+---
+> views=2
+ 
+Starting audit...
+[ERROR] /tmp/grade/wasniowski_tyler/FollowupDiscussion.java:10:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/FollowupDiscussion.java:15:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/FollowupDiscussion.java:19:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/FollowupDiscussion.java:23:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/FollowupDiscussion.java:27:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/FollowupDiscussion.java:31:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/PiazzaPostCollection.java:5: Missing a Javadoc comment. [JavadocType]
+[ERROR] /tmp/grade/wasniowski_tyler/PiazzaPostCollection.java:9:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/PiazzaPostCollection.java:14:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/PiazzaPostCollection.java:21:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/PiazzaPostCollection.java:25:5: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/PiazzaPostCollection.java:34:5: Missing a Javadoc comment. [JavadocMethod]
+Audit done.
+Checkstyle ends with 12 errors.
+ 
+commit 42f156690bae606ac166c67e6bd2adf4b0240d5e
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Mon Feb 20 01:07:29 2017 -0800
+
+    Commented code with javadocs
+
+:100644 100644 655dff6... 779597a... M	hw3/Answer.java
+:100644 100644 5ce38ca... fa299e2... M	hw3/Post.java
+:100644 100644 f321691... 708f74d... M	hw3/Question.java
+:100644 100644 b793e50... a635140... M	hw3/User.java
+:000000 100644 0000000... fea6eae... A	hw3/test1.out
+
+commit e590d0ec4976ac674a1e577b1cb5886134d59982
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Mon Feb 20 00:28:42 2017 -0800
+
+    Updated .gitignore to ignore .iml
+
+:100644 100644 0ed6551... 2aca057... M	.gitignore
+:100644 000000 b107a2d... 0000000... D	hw3/hw3.iml
+
+commit 1e09144ce680a6c690f9d98cf5dd889c31ff9f8d
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Mon Feb 20 00:26:06 2017 -0800
+
+    Added toString() method to User
+
+:100644 100644 d022420... b793e50... M	hw3/User.java
+
+commit d5db75af30ca9c448a49a9858f63c994cef97664
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Mon Feb 20 00:22:42 2017 -0800
+
+    Fixed bugs
+
+:100644 100644 822d52d... f9b6945... M	hw3/FollowupDiscussion.java
+:100644 100644 a0a6d35... f1e0491... M	hw3/PiazzaPostCollection.java
+:100644 100644 9ccb90b... 5ce38ca... M	hw3/Post.java
+:100644 100644 4654c65... f321691... M	hw3/Question.java
+
+commit 543788a55e3600ea24faf3bed60bd41e6e14c459
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 19 23:43:20 2017 -0800
+
+    Finished fixing errors, onto debugging
+
+:100644 100644 169f3d2... 655dff6... M	hw3/Answer.java
+:100644 100644 881af1f... 822d52d... M	hw3/FollowupDiscussion.java
+:000000 100644 0000000... a0a6d35... A	hw3/PiazzaPostCollection.java
+:100644 100644 f525ac6... 9ccb90b... M	hw3/Post.java
+:100644 100644 0ef1677... 4654c65... M	hw3/Question.java
+
+commit 837ada53899da33b8d1ce2f6f66f296b567cf27e
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 19 22:54:28 2017 -0800
+
+    Finished most of question
+
+:100644 100644 fde4965... 169f3d2... M	hw3/Answer.java
+:100644 100644 385002f... f525ac6... M	hw3/Post.java
+:100644 100644 eff10e2... 0ef1677... M	hw3/Question.java
+
+commit 29a6415aca32d8407d5721cb8722ddee59043efe
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 19 22:19:14 2017 -0800
+
+    Finished part of User
+
+:100644 100644 b4dd06f... d022420... M	hw3/User.java
+
+commit 2d55a8f0c4759a757d2db7fb084545bd343a93bb
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Wed Feb 15 22:43:30 2017 -0800
+
+    Created blank files for classes for homework 3
+
+:000000 100644 0000000... fde4965... A	hw3/Answer.java
+:000000 100644 0000000... 881af1f... A	hw3/FollowupDiscussion.java
+:000000 100644 0000000... 385002f... A	hw3/Post.java
+:000000 100644 0000000... eff10e2... A	hw3/Question.java
+:000000 100644 0000000... b4dd06f... A	hw3/User.java
+:000000 100644 0000000... b107a2d... A	hw3/hw3.iml
+
+commit d70218feaad4e39a393d5249cea6fc74757e4b1e
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Wed Feb 15 22:39:58 2017 -0800
+
+    Added test files for homework 3
+
+:000000 100644 0000000... fea6eae... A	hw3/test1.expected
+:000000 100644 0000000... 669ac25... A	hw3/test1.in
+
+commit c7e9db1a76e68703ba600b7f41b0ec8a56d1cb5f
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Wed Feb 15 22:30:55 2017 -0800
+
+    Started homework 3
+
+:000000 100644 0000000... 661102c... A	hw3/PiazzaSimulation.java
+:000000 100644 0000000... a863b25... A	hw3/Request.java
+:000000 100644 0000000... acbd735... A	hw3/Response.java
+
+commit ae266edaa1c2dd25f9ced3e08df756b35722e1dc
+Author: xiaofanlinus <graderxiaofanlin@gmail.com>
+Date:   Wed Feb 15 01:08:23 2017 -0800
+
+    done
+
+:100644 100644 ce0becd... 4712692... M	hw2scores.txt
+
+commit d4f5904d733a59aa74c62a9d88c80c1761758098
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Mon Feb 13 18:53:01 2017 -0800
+
+    Added numbers to hw2
+
+:100644 100644 5e1bbd8... 4880701... M	hw2/piazza.png
+
+commit eb4f2cc825d4360f3fa542b0a261250b73757a2d
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Mon Feb 13 18:44:15 2017 -0800
+
+    Fixed hw2 filename
+
+:000000 100644 0000000... 4740534... A	hw2/change.png
+:100644 000000 1a51e18... 0000000... D	hw2/sequence.png
+:000000 100644 0000000... b107a2d... A	lab5/mail/mail.iml
+
+commit 8017b69dc329b149a8c91db4dd78aca68866e1cf
+Author: Cay Horstmann <cay@horstmann.com>
+Date:   Mon Feb 13 17:04:58 2017 -0800
+
+    Added hw2scores template
+
+:000000 100644 0000000... ce0becd... A	hw2scores.txt
+
+commit 829cbb516c62175f3d13bde4f39b186ca2aa08af
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Mon Feb 13 14:46:55 2017 -0800
+
+    Finished lab5
+
+:000000 100644 0000000... d28c199... A	lab5/mail/keys.out
+:000000 100644 0000000... 3076868... A	lab5/mail/keys.txt
+
+commit 9ae1e215fe655c86d512a3d895c5217e23ab325a
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Mon Feb 13 14:36:38 2017 -0800
+
+    Added lab5
+
+:000000 100644 0000000... aef790c... A	lab5/mail/Connection.java
+:000000 100644 0000000... da82f21... A	lab5/mail/MailSystem.java
+:000000 100644 0000000... dd08bf1... A	lab5/mail/MailSystemTester.java
+:000000 100644 0000000... 1f38b68... A	lab5/mail/Mailbox.java
+:000000 100644 0000000... 16c97ba... A	lab5/mail/Message.java
+:000000 100644 0000000... 6cc61ea... A	lab5/mail/MessageQueue.java
+:000000 100644 0000000... 8d207f6... A	lab5/mail/Telephone.java
+:000000 100644 0000000... bdaf09e... A	lab5/mail/semantic.cache
