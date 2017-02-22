@@ -1,9 +1,9 @@
 Student: wasniowski_tyler
-test1.in passes with empty diff (max 8): 
-test2.in passes with empty diff (max 8):
-No missing javadoc comments (max 4):
+test1.in passes with empty diff (max 8): 8
+test2.in passes with empty diff (max 8): 6
+No missing javadoc comments (max 4): 0
 (Ignore tab errors this time)
-At least 3 git checkins (max 4):
+At least 3 git checkins (max 4): 4
  
 test1.in
  
