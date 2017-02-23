@@ -1,4 +1,8 @@
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.HashSet;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -30,6 +34,28 @@ public class ArraySetTest {
 
     @Test
     public void testRandom() throws Exception {
+        HashSet<Integer> control = new HashSet();
+        ArraySet arraySet = new ArraySet();
 
+        Random rnd = new Random();
+        for (int n = 0; n < 100; n++) {
+            for (int m = 0; m < rnd.nextInt(100); m++) {
+                int input = rnd.nextInt((Integer.MAX_VALUE * 2 - 1) - Integer.MAX_VALUE);
+                control.add(input);
+                arraySet.set(input);
+            }
+
+            for (int m = 0; m < rnd.nextInt(100); m++) {
+                int input = rnd.nextInt((Integer.MAX_VALUE * 2 - 1) - Integer.MAX_VALUE);
+                control.remove(input);
+                arraySet.clear(input);
+            }
+
+            for (int m : control) {
+                assertTrue(arraySet.test(m));
+            }
+
+            assertEquals(arraySet.size(), control.size());
+        }
     }
 }
