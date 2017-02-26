@@ -151,8 +151,10 @@ public class SetTest {
                 bitSet.set(input);
             }
 
-            for (int m = 0; m < rnd.nextInt(1000); m++) {
-                int input = rnd.nextInt(100) - 50;
+            assertEquals(bitSet.size(), control.size());
+
+            for (int m = 0; m < rnd.nextInt(10000000); m++) {
+                int input = rnd.nextInt(10000) - 50;
                 control.remove(input);
                 bitSet.clear(input);
             }
@@ -166,6 +168,8 @@ public class SetTest {
             System.out.println("Max: " + bitSet.max());
             System.out.println("Min: " + bitSet.min());
             System.out.println();
+
+            assertEquals(bitSet.size(), control.size());
 
         }
     }

@@ -57,9 +57,9 @@ public class BitSet implements IntSet {
     @Override
     public void clear(int n)
     {
-        n -= start;
-        int indexInElements = n / 32;
-        int bitIndexInPack = n % 32;
+        int bitDistanceFromStart = n - start;
+        int indexInElements = (int) Math.floor(bitDistanceFromStart / 32.0);
+        int bitIndexInPack = bitDistanceFromStart % 32;
 
         if (indexInElements < 0 || indexInElements >= elements.length)
             return;
@@ -107,7 +107,7 @@ public class BitSet implements IntSet {
         }
 
         if (indexOfNewElement >= elements.length) {
-            int newElementsLength = Math.max(elements.length * 2, indexOfNewElement);
+            int newElementsLength = Math.max(elements.length * 2, indexOfNewElement + 1);
             elements = Arrays.copyOf(elements, newElementsLength);
         }
     }
@@ -138,7 +138,7 @@ public class BitSet implements IntSet {
             }
         }
 
-        return "[" + ret.substring(0, Math.max(0, ret.length())) + "]";
+        return "[" + ret.substring(0, Math.max(0, ret.length() - 2)) + "]";
     }
 
     // Don't change any of these (but add javadoc)
