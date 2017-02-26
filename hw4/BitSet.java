@@ -1,5 +1,8 @@
 import java.util.Arrays;
 
+/**
+ * A set of integers implemented with a bit set
+ */
 public class BitSet implements IntSet {
 
     int[] elements;
@@ -8,6 +11,9 @@ public class BitSet implements IntSet {
     int start;
     boolean startIsSet;
 
+    /**
+     * Initializes instance variables
+     */
     public BitSet() {
         elements = new int[10];
         elementCount = 0;
@@ -112,6 +118,10 @@ public class BitSet implements IntSet {
         }
     }
 
+    /**
+     * Shifts the set back to accommodate for new element
+     * @param indexOfNewElement the index of the new element of which to accommodate for
+     */
     private void moveStartBack(int indexOfNewElement) {
         if (indexOfNewElement >= 0)
             return;
@@ -143,23 +153,42 @@ public class BitSet implements IntSet {
 
     // Don't change any of these (but add javadoc)
 
+    @Override
     public int size()
     {
         return elementCount;
     }
 
+    /**
+     * Checks if the bit at i is in n
+     * @param n the integer to check bits of
+     * @param i the index of the bit in n
+     * @return true if bit at i is in n
+     */
     private static boolean test(int n, int i)
     {
         assert 0 <= i && i < 32;
         return (n & (1 << i)) != 0;
     }
 
+    /**
+     * Sets the bit at i in n to 1
+     * @param n the integer to set the bit of
+     * @param i the index of the bit in n
+     * @return the new n after bit at i was set to 1
+     */
     private static int set(int n, int i)
     {
         assert 0 <= i && i < 32;
         return n | (1 << i);
     }
 
+    /**
+     * Sets the bit at i in n to 0
+     * @param n the integer to set the bit of
+     * @param i the index of the bit in n
+     * @return the new n after bit at i was set to 0
+     */
     private static int clear(int n, int i)
     {
         assert 0 <= i && i < 32;

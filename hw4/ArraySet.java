@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 /**
- * Created by Tyler on 2/21/2017.
+ * A set of integers implemented with an array
  */
 public class ArraySet implements IntSet {
 
@@ -10,6 +10,9 @@ public class ArraySet implements IntSet {
     int smallest = Integer.MAX_VALUE;
     int largest = Integer.MIN_VALUE;
 
+    /**
+     * Initializes instance variables
+     */
     public ArraySet() {
         elements = new int[10];
         elementCount = 0;
@@ -62,6 +65,9 @@ public class ArraySet implements IntSet {
         return elementCount;
     }
 
+    /**
+     * Finds the new minimum and maximum with a simple brute force search
+     */
     private void updateMinAndMax() {
         if (elementCount <= 0)
             return;
@@ -80,11 +86,19 @@ public class ArraySet implements IntSet {
         largest = max;
     }
 
+    /**
+     * Ensures the array has enough space for another element
+     */
     private void ensureCapacity() {
         if (elementCount >= elements.length)
             elements = Arrays.copyOf(elements, elements.length * 2);
     }
 
+    /**
+     * Looks for the element in the array
+     * @param target the element to find
+     * @return the index of target in the array, -1 if not found
+     */
     private int findElement(int target) {
         for (int i = 0; i < elementCount; i++)
             if (elements[i] == target)
