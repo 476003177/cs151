@@ -126,8 +126,6 @@ public class BitSet implements IntSet {
         if (indexOfNewElement >= 0)
             return;
 
-        indexOfNewElement = indexOfNewElement == 24 ? 25 : indexOfNewElement;
-
         int lengthToAdd = Math.max(elements.length, Math.abs(indexOfNewElement));
         int[] newElements = new int[elements.length + lengthToAdd];
 
