@@ -5,8 +5,14 @@ import java.util.Random;
 
 import static org.junit.Assert.*;
 
+/**
+ * A junit 4 tester class for ArraySet and BitSet
+ */
 public class SetTest {
 
+    /**
+     * Tests setting and clearing in ArraySet
+     */
     @Test
     public void setAndClear() {
         IntSet set = new ArraySet();
@@ -20,6 +26,9 @@ public class SetTest {
         assertFalse(set.test(100));
     }
 
+    /**
+     * Tests removing and order after removing in ArraySet
+     */
     @Test
     public void elementOrderRemove() {
         ArraySet set = new ArraySet();
@@ -37,6 +46,9 @@ public class SetTest {
         assertEquals(100, set.largest);
     }
 
+    /**
+     * Tests Adding one element to BitSet
+     */
     @Test
     public void testOneElement() {
         IntSet set = new BitSet();
@@ -48,6 +60,9 @@ public class SetTest {
         assertFalse(set.test(99));
     }
 
+    /**
+     * Simple BitSet test with two elements
+     */
     @Test
     public void testBits() {
         BitSet set = new BitSet();
@@ -58,6 +73,9 @@ public class SetTest {
         assertEquals(100, set.start);
     }
 
+    /**
+     * Tests BitSet expanding backwards correctness
+     */
     @Test
     public void bitSetTestExpandingBackwards() {
         BitSet set = new BitSet();
@@ -75,6 +93,10 @@ public class SetTest {
         System.out.println(set.size());
     }
 
+    /**
+     * Simply tests adding and removing from ArraySet
+     * @throws Exception just in case
+     */
     @Test
     public void arraySetTest1() throws Exception {
         ArraySet arraySet = new ArraySet();
@@ -103,6 +125,10 @@ public class SetTest {
         System.out.println(arraySet);
     }
 
+    /**
+     * Runs many random tests on ArraySet and compares it with the results of a HashSet
+     * @throws Exception just in case
+     */
     @Test
     public void arraySetTestRandom() throws Exception {
         HashSet<Integer> control = new HashSet();
@@ -138,6 +164,10 @@ public class SetTest {
         }
     }
 
+    /**
+     * Runs many tests on BitSet and compares with a HashSet as a control
+     * @throws Exception just in case
+     */
     @Test
     public void bitSetTestRandom() throws Exception {
         HashSet<Integer> control = new HashSet();
