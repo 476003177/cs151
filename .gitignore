@@ -8,4 +8,4 @@ out/
 *.ear
 hs_err_pid*
 
-*_Ignore
+*_Ignore*
