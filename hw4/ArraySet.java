@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.HashSet;
 
 /**
  * Created by Tyler on 2/21/2017.
@@ -11,12 +10,9 @@ public class ArraySet implements IntSet {
     int smallest = Integer.MAX_VALUE;
     int largest = Integer.MIN_VALUE;
 
-    private HashSet<Integer> emptySpots;
-
     public ArraySet() {
         elements = new int[10];
         elementCount = 0;
-        emptySpots = new HashSet<>();
     }
 
     @Override
@@ -31,21 +27,24 @@ public class ArraySet implements IntSet {
             return;
 
         ensureCapacity();
+        elements[elementCount++] = n;
 
-        int elIndex = (emptySpots.size() > 0) ? emptySpots.iterator().next() : elementCount++;
-
-        elements[elIndex] = n;
-        largest = Math.max(n, largest);
         smallest = Math.min(n, smallest);
+        largest = Math.max(n, largest);
     }
 
     @Override
     public void clear(int n) {
         int elIndex = findElement(n);
-        if (elIndex != -1)
-            emptySpots.add(elIndex);
+        boolean isSmallestOrLargest = elements[elIndex] == smallest || elements[elIndex] == largest;
 
-        elementCount--;
+        if (elIndex != -1) {
+            elements[elIndex] = elements[elementCount - 1];
+            elementCount--;
+        }
+
+        if (isSmallestOrLargest)
+            updateMinAndMax();
     }
 
     @Override
@@ -63,6 +62,24 @@ public class ArraySet implements IntSet {
         return elementCount;
     }
 
+    private void updateMinAndMax() {
+        if (elementCount <= 0)
+            return;
+
+        int min = elements[0];
+        int max = elements[0];
+        for (int i = 0; i < elementCount; i++) {
+            if (elements[i] < min)
+                min = elements[i];
+
+            if (elements[i] > max)
+                max = elements[i];
+        }
+
+        smallest = min;
+        largest = max;
+    }
+
     private void ensureCapacity() {
         if (elementCount >= elements.length)
             elements = Arrays.copyOf(elements, elements.length * 2);
@@ -70,7 +87,7 @@ public class ArraySet implements IntSet {
 
     private int findElement(int target) {
         for (int i = 0; i < elementCount; i++)
-            if (!emptySpots.contains(i) && elements[i] == target)
+            if (elements[i] == target)
                 return i;
 
         return -1;
@@ -78,7 +95,11 @@ public class ArraySet implements IntSet {
 
     @Override
     public String toString() {
-        return Arrays.toString(elements);
+        String ret = "";
+        for (int i = 0; i < elementCount; i++)
+            ret += elements[i] + ", ";
+
+        return "[" + ret.substring(0, Math.max(0, ret.length() - 2)) + "]";
     }
 
 }
