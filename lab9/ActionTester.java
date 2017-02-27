@@ -14,13 +14,22 @@ public class ActionTester
 
       JButton helloButton = new JButton("Say Hello");
 
-      helloButton.addActionListener(event ->
-         textField.setText("Hello, World!"));
-
       JButton goodbyeButton = new JButton("Say Goodbye");
+      goodbyeButton.setEnabled(false);
 
+
+      helloButton.addActionListener(event ->
+         {
+            helloButton.setEnabled(false);
+            goodbyeButton.setEnabled(true);
+            textField.setText("Hello, World!");
+         });
       goodbyeButton.addActionListener(event ->
-         textField.setText("Goodbye, World!"));
+         {
+            goodbyeButton.setEnabled(false);
+            helloButton.setEnabled(true);
+            textField.setText("Goodbye, World!");
+         });
 
       frame.setLayout(new FlowLayout());
 
