@@ -17,18 +17,19 @@ public class ActionTester
       JButton goodbyeButton = new JButton("Say Goodbye");
       goodbyeButton.setEnabled(false);
 
+      int[] counter = { 0 };
 
       helloButton.addActionListener(event ->
          {
             helloButton.setEnabled(false);
             goodbyeButton.setEnabled(true);
-            textField.setText("Hello, World!");
+            textField.setText("Hello, World! " + counter[0]++);
          });
       goodbyeButton.addActionListener(event ->
          {
             goodbyeButton.setEnabled(false);
             helloButton.setEnabled(true);
-            textField.setText("Goodbye, World!");
+            textField.setText("Goodbye, World! " + counter[0]++);
          });
 
       frame.setLayout(new FlowLayout());
