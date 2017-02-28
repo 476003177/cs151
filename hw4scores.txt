@@ -1,0 +1,902 @@
+Student: wasniowski_tyler
+ArraySetTest passes (max 8): 8
+BitSetTest passes (max 8): 8
+Provides SetTest.java with at least 4 test cases (max 4): 4
+No CheckStyle issues (max 3): 3
+At least 3 git checkins (max 3): 3
+-------------------------------------------------
+ArraySetTest
+JUnit version 4.11
+.......
+Time: 0.033
+
+OK (7 tests)
+
+-------------------------------------------------
+BitSetTest
+JUnit version 4.11
+.......
+Time: 0.023
+
+OK (7 tests)
+
+-------------------------------------------------
+SetTest
+Note: SetTest.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+JUnit version 4.11
+.[40, 80, 90, 70, 100]
+..90
+5
+.[0, -10, 50]
+[50, -10]
+[50, -10, 12]
+..Control: [-35, -8, -10]
+BitSet: [-35, -10, -8]
+Max: -8
+Min: -35
+
+Control: [-35, -8]
+BitSet: [-35, -8]
+Max: -8
+Min: -35
+
+Control: [-8, -29]
+BitSet: [-29, -8]
+Max: -8
+Min: -29
+
+Control: [-29]
+BitSet: [-29]
+Max: -29
+Min: -29
+
+Control: [48, -5, -29, 13, 30]
+BitSet: [-29, -5, 13, 30, 48]
+Max: 48
+Min: -29
+
+Control: [-36, -5, 22, 6, 27, -29, 13, 30, 46, -31]
+BitSet: [-36, -31, -29, -5, 6, 13, 22, 27, 30, 46]
+Max: 46
+Min: -36
+
+Control: [-36, -5, 6, 13, 22, -25, -29, -30, 30, -31]
+BitSet: [-36, -31, -30, -29, -25, -5, 6, 13, 22, 30]
+Max: 30
+Min: -36
+
+Control: [-5, 6, 16, 22, -25, -29, 28, 30, -31]
+BitSet: [-31, -29, -25, -5, 6, 16, 22, 28, 30]
+Max: 30
+Min: -31
+
+Control: [0, -5, 6, 45, 16, 22, -25, 26, 28, 30]
+BitSet: [-25, -5, 0, 6, 16, 22, 26, 28, 30, 45]
+Max: 45
+Min: -25
+
+Control: [-35, 6, -7, 45, 46, 16, 22, 28, 30]
+BitSet: [-35, -7, 6, 16, 22, 28, 30, 45, 46]
+Max: 46
+Min: -35
+
+Control: [-35, -7, 45, -16, 15, 22, 30, 31]
+BitSet: [-35, -16, -7, 15, 22, 30, 31, 45]
+Max: 45
+Min: -35
+
+Control: [-35, -7, 38, 45, -16, 15, 22, 30, 31]
+BitSet: [-35, -16, -7, 15, 22, 30, 31, 38, 45]
+Max: 45
+Min: -35
+
+Control: [-7, 45, -16, 15, 22, -24, 30, 31]
+BitSet: [-24, -16, -7, 15, 22, 30, 31, 45]
+Max: 45
+Min: -24
+
+Control: [-7, 44, 45, 47, -24, 30, 31]
+BitSet: [-24, -7, 30, 31, 44, 45, 47]
+Max: 47
+Min: -24
+
+Control: [0, -6, -41, 44, 45, 47, 23, 30, 31]
+BitSet: [-41, -6, 0, 23, 30, 31, 44, 45, 47]
+Max: 47
+Min: -41
+
+Control: [0, -6, -41, 42, 45, 47, 23, -29, 30]
+BitSet: [-41, -29, -6, 0, 23, 30, 42, 45, 47]
+Max: 47
+Min: -41
+
+Control: [0, 6, -41, 42, 45, 47, 20, -29, 30]
+BitSet: [-41, -29, 0, 6, 20, 30, 42, 45, 47]
+Max: 47
+Min: -41
+
+Control: [0, -6, 6, -41, -9, 42, 45, -31]
+BitSet: [-41, -31, -9, -6, 0, 6, 42, 45]
+Max: 45
+Min: -41
+
+Control: [0, -1, -4, -6, -38, 6, -41, -9, 41, 42, -11, 45, -20, -31]
+BitSet: [-41, -38, -31, -20, -11, -9, -6, -4, -1, 0, 6, 41, 42, 45]
+Max: 45
+Min: -41
+
+Control: [0, -1, -5, -38, -9, 41, 42, 10, 45, -20]
+BitSet: [-38, -20, -9, -5, -1, 0, 10, 41, 42, 45]
+Max: 45
+Min: -38
+
+Control: [-5, -38, 42, 10, 45, -20]
+BitSet: [-38, -20, -5, 10, 42, 45]
+Max: 45
+Min: -38
+
+Control: [-38, 42, 10, -12, 45]
+BitSet: [-38, -12, 10, 42, 45]
+Max: 45
+Min: -38
+
+Control: [-9, 42, 10, -12, 43, 11, 45, -24, 26]
+BitSet: [-24, -12, -9, 10, 11, 26, 42, 43, 45]
+Max: 45
+Min: -24
+
+Control: [-9, 42, 10, -12, 43, 45, -24, 26]
+BitSet: [-24, -12, -9, 10, 26, 42, 43, 45]
+Max: 45
+Min: -24
+
+Control: [36, -9, 42, 45, 26]
+BitSet: [-9, 26, 36, 42, 45]
+Max: 45
+Min: -9
+
+Control: [36, 6, -9, 45, 47, 22]
+BitSet: [-9, 6, 22, 36, 45, 47]
+Max: 47
+Min: -9
+
+Control: [33, 36, -6, 37, 6, 7, -9, 11, 47, 22, 26]
+BitSet: [-9, -6, 6, 7, 11, 22, 26, 33, 36, 37, 47]
+Max: 47
+Min: -9
+
+Control: [33, 36, -6, 6, 7, -9]
+BitSet: [-9, -6, 6, 7, 33, 36]
+Max: 36
+Min: -9
+
+Control: [33, -2, 36, -6, 6, 7, 11, 15, -17]
+BitSet: [-17, -6, -2, 6, 7, 11, 15, 33, 36]
+Max: 36
+Min: -17
+
+Control: [33, -6, 6, 11, -17]
+BitSet: [-17, -6, 6, 11, 33]
+Max: 33
+Min: -17
+
+Control: [33, -6, 11, -18]
+BitSet: [-18, -6, 11, 33]
+Max: 33
+Min: -18
+
+Control: [-6]
+BitSet: [-6]
+Max: -6
+Min: -6
+
+Control: [32, -6, -19, -23, -26, -31]
+BitSet: [-31, -26, -23, -19, -6, 32]
+Max: 32
+Min: -31
+
+Control: [32, 15, -19, -23, 23, -26, -31]
+BitSet: [-31, -26, -23, -19, 15, 23, 32]
+Max: 32
+Min: -31
+
+Control: [32, 37, -23, -26, 25, -31]
+BitSet: [-31, -26, -23, 25, 32, 37]
+Max: 37
+Min: -31
+
+Control: [37, 20, -21, -23, -26, 25, 29]
+BitSet: [-26, -23, -21, 20, 25, 29, 37]
+Max: 37
+Min: -26
+
+Control: [37, -39, -41, 45, 16, 20, 24, -26, 25, 26, 29]
+BitSet: [-41, -39, -26, 16, 20, 24, 25, 26, 29, 37, 45]
+Max: 45
+Min: -41
+
+Control: [37, -38, 38, -10, 45, 16, 20, 21, 24, -26, 25, 26, 29]
+BitSet: [-38, -26, -10, 16, 20, 21, 24, 25, 26, 29, 37, 38, 45]
+Max: 45
+Min: -38
+
+Control: [-37, 37, -38, 38, -10, 45, 47, 16, 20, 21, 25, 26, 29, -32]
+BitSet: [-38, -37, -32, -10, 16, 20, 21, 25, 26, 29, 37, 38, 45, 47]
+Max: 47
+Min: -38
+
+Control: [2, -36, -37, 37, -38, 38, 44, 45, 16, 20, 25, 26, 27, 29, -32]
+BitSet: [-38, -37, -36, -32, 2, 16, 20, 25, 26, 27, 29, 37, 38, 44, 45]
+Max: 45
+Min: -38
+
+Control: [2, -36, 37, -38, 44, 45, 16, 25, 26, 27, 29]
+BitSet: [-38, -36, 2, 16, 25, 26, 27, 29, 37, 44, 45]
+Max: 45
+Min: -38
+
+Control: [-1, 2, 34, -35, -36, 37, -38, -7, -8, -41, -42, 16, -18, 25, 26, 29]
+BitSet: [-42, -41, -38, -36, -35, -18, -8, -7, -1, 2, 16, 25, 26, 29, 34, 37]
+Max: 37
+Min: -42
+
+Control: [-1, -2, 2, 34, -35, -36, -38, -8, -42, 16, -18, -22, 25, 26, -30]
+BitSet: [-42, -38, -36, -35, -30, -22, -18, -8, -2, -1, 2, 16, 25, 26, 34]
+Max: 34
+Min: -42
+
+Control: [-1, 32, -33, -2, 2, 34, -35, -3, -36, -38, -39, -8, 7, -42, -12, 16, -18, -22, 25, 26, -30]
+BitSet: [-42, -39, -38, -36, -35, -33, -30, -22, -18, -12, -8, -3, -2, -1, 2, 7, 16, 25, 26, 32, 34]
+Max: 34
+Min: -42
+
+Control: [-1, 2, 34, -3, 4, 6, 7, -42, 16, 25, -30]
+BitSet: [-42, -30, -3, -1, 2, 4, 6, 7, 16, 25, 34]
+Max: 34
+Min: -42
+
+Control: [-1, 2, 34, -3, 4, 5, 6, 7, -42, 16, 20, 25, -30]
+BitSet: [-42, -30, -3, -1, 2, 4, 5, 6, 7, 16, 20, 25, 34]
+Max: 34
+Min: -42
+
+Control: [2, 34, 4, 6, -42, 16, 18, 25]
+BitSet: [-42, 2, 4, 6, 16, 18, 25, 34]
+Max: 34
+Min: -42
+
+Control: [-37, -42, 16, 18, 25, 29]
+BitSet: [-42, -37, 16, 18, 25, 29]
+Max: 29
+Min: -42
+
+Control: [-37, -39, -42, 16, 18, 22, 25, 29]
+BitSet: [-42, -39, -37, 16, 18, 22, 25, 29]
+Max: 29
+Min: -42
+
+Control: [-34, 33, -37, -42, 16, 18, 22, 25, -29, 29]
+BitSet: [-42, -37, -34, -29, 16, 18, 22, 25, 29, 33]
+Max: 33
+Min: -42
+
+Control: [-34, 33, -35, -5, -6, -42, 16, 18, 22, -29, 29]
+BitSet: [-42, -35, -34, -29, -6, -5, 16, 18, 22, 29, 33]
+Max: 33
+Min: -42
+
+Control: [-1, -34, 33, -35, 2, -5, 9, 16, -50, 18, -22, 22, -29, 29]
+BitSet: [-50, -35, -34, -29, -22, -5, -1, 2, 9, 16, 18, 22, 29, 33]
+Max: 33
+Min: -50
+
+Control: [-35, 9, -13, -22]
+BitSet: [-35, -22, -13, 9]
+Max: 9
+Min: -35
+
+Control: [47, -22, 22]
+BitSet: [-22, 22, 47]
+Max: 47
+Min: -22
+
+Control: [47, -22, 22, -31]
+BitSet: [-31, -22, 22, 47]
+Max: 47
+Min: -31
+
+Control: [-1, 42, 47, -22, 22, -31]
+BitSet: [-31, -22, -1, 22, 42, 47]
+Max: 47
+Min: -31
+
+Control: [-20, 26, -31]
+BitSet: [-31, -20, 26]
+Max: 26
+Min: -31
+
+Control: [-20, 26, -31]
+BitSet: [-31, -20, 26]
+Max: 26
+Min: -31
+
+Control: [9, -31]
+BitSet: [-31, 9]
+Max: 9
+Min: -31
+
+Control: [32, -5, -9, -43, -44, -23, 27]
+BitSet: [-44, -43, -23, -9, -5, 27, 32]
+Max: 32
+Min: -44
+
+Control: [-5, 6, -9, -44, 20, -31, 31]
+BitSet: [-44, -31, -9, -5, 6, 20, 31]
+Max: 31
+Min: -44
+
+Control: [2, -5, 6, -44, -45, -49, 20, 29, -31, 31]
+BitSet: [-49, -45, -44, -31, -5, 2, 6, 20, 29, 31]
+Max: 31
+Min: -49
+
+Control: [3, 40, -49, 19]
+BitSet: [-49, 3, 19, 40]
+Max: 40
+Min: -49
+
+Control: [-36, 40, -46, -49, 19, -20, 24]
+BitSet: [-49, -46, -36, -20, 19, 24, 40]
+Max: 40
+Min: -49
+
+Control: [-49, 19, -20, 24, -30]
+BitSet: [-49, -30, -20, 19, 24]
+Max: 24
+Min: -49
+
+Control: [6, -9, 41, -43, 49, 19, -30]
+BitSet: [-43, -30, -9, 6, 19, 41, 49]
+Max: 49
+Min: -43
+
+Control: [-35, -37, 6, -9, 41, -43, 46, 49, 19, -30]
+BitSet: [-43, -37, -35, -30, -9, 6, 19, 41, 46, 49]
+Max: 49
+Min: -43
+
+Control: [-10, -44, 19]
+BitSet: [-44, -10, 19]
+Max: 19
+Min: -44
+
+Control: [37, -10, 19, -28]
+BitSet: [-28, -10, 19, 37]
+Max: 37
+Min: -28
+
+Control: [-4, 37, 6, -10, 19, -28]
+BitSet: [-28, -10, -4, 6, 19, 37]
+Max: 37
+Min: -28
+
+Control: [-4, 37, 6, -40, -41, 19, -28, 29]
+BitSet: [-41, -40, -28, -4, 6, 19, 29, 37]
+Max: 37
+Min: -41
+
+Control: [-4, 37, -6, 6, -40, 18, 19, 29]
+BitSet: [-40, -6, -4, 6, 18, 19, 29, 37]
+Max: 37
+Min: -40
+
+Control: [32, 2, -6, -40, -42, 19, -21, 29]
+BitSet: [-42, -40, -21, -6, 2, 19, 29, 32]
+Max: 32
+Min: -42
+
+Control: [32, -3, -6, -38, -40, -18, -21, 29]
+BitSet: [-40, -38, -21, -18, -6, -3, 29, 32]
+Max: 32
+Min: -40
+
+Control: [32, 33, -6, -38, -40, 42, -47, -18, 17, -21, -32]
+BitSet: [-47, -40, -38, -32, -21, -18, -6, 17, 32, 33, 42]
+Max: 42
+Min: -47
+
+Control: [-34, 35, -38, 38, -40, -8, 42, -47, -18, 17, -21]
+BitSet: [-47, -40, -38, -34, -21, -18, -8, 17, 35, 38, 42]
+Max: 42
+Min: -47
+
+Control: [-34, 35, 38, -40, -8, 42, -47, 16, -18, -21]
+BitSet: [-47, -40, -34, -21, -18, -8, 16, 35, 38, 42]
+Max: 42
+Min: -47
+
+Control: [-34, -40, -8, -21]
+BitSet: [-40, -34, -21, -8]
+Max: -8
+Min: -40
+
+Control: [-34, -40, -8, -42, -21]
+BitSet: [-42, -40, -34, -21, -8]
+Max: -8
+Min: -42
+
+Control: [-34, -41, -42, -21]
+BitSet: [-42, -41, -34, -21]
+Max: -21
+Min: -42
+
+Control: [3, -41, 47, -30]
+BitSet: [-41, -30, 3, 47]
+Max: 47
+Min: -41
+
+Control: [34, 14, -30]
+BitSet: [-30, 14, 34]
+Max: 34
+Min: -30
+
+Control: [34, 5, 10, 14, 17, -26, -30]
+BitSet: [-30, -26, 5, 10, 14, 17, 34]
+Max: 34
+Min: -30
+
+Control: [34, 5, -16, -26, 26, -30]
+BitSet: [-30, -26, -16, 5, 26, 34]
+Max: 34
+Min: -30
+
+Control: [32, 34, 5, 40, -16, -19, -26, 26, -30]
+BitSet: [-30, -26, -19, -16, 5, 26, 32, 34, 40]
+Max: 40
+Min: -30
+
+Control: [32, 1, 34, 5, -38, -19, -23, -26, -30]
+BitSet: [-38, -30, -26, -23, -19, 1, 5, 32, 34]
+Max: 34
+Min: -38
+
+Control: [32, 1, 34, 4, 5, -38, 44, -19, -23, -30, 29, -32]
+BitSet: [-38, -32, -30, -23, -19, 1, 4, 5, 29, 32, 34, 44]
+Max: 44
+Min: -38
+
+Control: [32, 1, 44, -18, 29]
+BitSet: [-18, 1, 29, 32, 44]
+Max: 44
+Min: -18
+
+Control: [1, -6]
+BitSet: [-6, 1]
+Max: 1
+Min: -6
+
+Control: [-6, 41, 45, -49, 21, 22, 27]
+BitSet: [-49, -6, 21, 22, 27, 41, 45]
+Max: 45
+Min: -49
+
+Control: [-6, 45, -49, 30]
+BitSet: [-49, -6, 30, 45]
+Max: 45
+Min: -49
+
+Control: [45, -49, 30]
+BitSet: [-49, 30, 45]
+Max: 45
+Min: -49
+
+Control: [45]
+BitSet: [45]
+Max: 45
+Min: 45
+
+Control: [-1, 41, 9, 45, 48]
+BitSet: [-1, 9, 41, 45, 48]
+Max: 48
+Min: -1
+
+Control: [45, -17, 17, 27, 31]
+BitSet: [-17, 17, 27, 31, 45]
+Max: 45
+Min: -17
+
+Control: [33, 45, -17, 48, 31]
+BitSet: [-17, 31, 33, 45, 48]
+Max: 48
+Min: -17
+
+Control: [33, 45, -17, 48, 29]
+BitSet: [-17, 29, 33, 45, 48]
+Max: 48
+Min: -17
+
+Control: [33, 44, 45, -17, -18, 29]
+BitSet: [-18, -17, 29, 33, 44, 45]
+Max: 45
+Min: -18
+
+Control: [33, 44, 45, -17, -18, 29]
+BitSet: [-18, -17, 29, 33, 44, 45]
+Max: 45
+Min: -18
+
+Control: [33, -2, -3, 6, 44, 45, -17, -18, -24, 29, -30]
+BitSet: [-30, -24, -18, -17, -3, -2, 6, 29, 33, 44, 45]
+Max: 45
+Min: -30
+
+.E.
+Time: 0.212
+There was 1 failure:
+1) arraySetTestRandom(SetTest)
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at ArraySet.clear(ArraySet.java:42)
+	at SetTest.arraySetTestRandom(SetTest.java:150)
+
+FAILURES!!!
+Tests run: 8,  Failures: 1
+
+-------------------------------------------------
+import org.junit.Test;
+
+import java.util.HashSet;
+import java.util.Random;
+
+import static org.junit.Assert.*;
+
+/**
+ * A junit 4 tester class for ArraySet and BitSet
+ */
+public class SetTest {
+
+    /**
+     * Tests setting and clearing in ArraySet
+     */
+    @Test
+    public void setAndClear() {
+        IntSet set = new ArraySet();
+        set.set(100);
+        set.set(150);
+        set.clear(100);
+        assertEquals(150, set.min());
+        assertEquals(150, set.max());
+        assertEquals(1, set.size());
+        assertTrue(set.test(150));
+        assertFalse(set.test(100));
+    }
+
+    /**
+     * Tests removing and order after removing in ArraySet
+     */
+    @Test
+    public void elementOrderRemove() {
+        ArraySet set = new ArraySet();
+        set.set(40);
+        set.set(110);
+        set.set(90);
+        set.set(70);
+        set.set(100);
+        set.set(80);
+        set.clear(110);
+        System.out.println(set);
+        assertEquals(40, set.elements[0]);
+        assertEquals(80, set.elements[1]);
+        assertEquals(90, set.elements[2]);
+        assertEquals(100, set.largest);
+    }
+
+    /**
+     * Tests Adding one element to BitSet
+     */
+    @Test
+    public void testOneElement() {
+        IntSet set = new BitSet();
+        set.set(100);
+        assertEquals(100, set.min());
+        assertEquals(100, set.max());
+        assertEquals(1, set.size());
+        assertTrue(set.test(100));
+        assertFalse(set.test(99));
+    }
+
+    /**
+     * Simple BitSet test with two elements
+     */
+    @Test
+    public void testBits() {
+        BitSet set = new BitSet();
+        set.set(100);
+        set.set(102);
+        set.clear(100);
+        assertEquals(4, set.elements[0]);
+        assertEquals(100, set.start);
+    }
+
+    /**
+     * Tests BitSet expanding backwards correctness
+     */
+    @Test
+    public void bitSetTestExpandingBackwards() {
+        BitSet set = new BitSet();
+        set.set(100);
+        set.set(-1);
+        set.set(-1000);
+        set.set(-1020);
+        set.set(-1021);
+        assertTrue(set.test(100));
+        assertTrue(set.test(-1));
+        assertTrue(set.test(-1000));
+        assertTrue(set.test(-1020));
+        assertTrue(set.test(-1021));
+        System.out.println(set.elements.length);
+        System.out.println(set.size());
+    }
+
+    /**
+     * Simply tests adding and removing from ArraySet
+     * @throws Exception just in case
+     */
+    @Test
+    public void arraySetTest1() throws Exception {
+        ArraySet arraySet = new ArraySet();
+
+        arraySet.set(0);
+        arraySet.set(-10);
+        arraySet.set(50);
+
+        System.out.println(arraySet);
+
+        assertTrue(arraySet.test(0));
+        assertTrue(arraySet.test(-10));
+        assertFalse(arraySet.test(25));
+        assertTrue(arraySet.test(50));
+        assertEquals(arraySet.size(), 3);
+
+        arraySet.clear(0);
+
+        System.out.println(arraySet);
+
+        assertFalse(arraySet.test(0));
+        assertEquals(arraySet.size(), 2);
+
+        arraySet.set(12);
+
+        System.out.println(arraySet);
+    }
+
+    /**
+     * Runs many random tests on ArraySet and compares it with the results of a HashSet
+     * @throws Exception just in case
+     */
+    @Test
+    public void arraySetTestRandom() throws Exception {
+        HashSet<Integer> control = new HashSet();
+        IntSet arraySet = new ArraySet();
+
+        Random rnd = new Random();
+        for (int n = 0; n < 100; n++) {
+            for (int m = 0; m < rnd.nextInt(20); m++) {
+                int input = rnd.nextInt(100) - 50;
+                control.add(input);
+                arraySet.set(input);
+            }
+
+            assertEquals(arraySet.size(), control.size());
+
+            for (int m = 0; m < rnd.nextInt(1000); m++) {
+                int input = rnd.nextInt(100) - 50;
+                control.remove(input);
+                arraySet.clear(input);
+            }
+
+            for (int m : control) {
+                assertTrue(arraySet.test(m));
+            }
+
+            System.out.println("Control: " + control.toString());
+            System.out.println("ArraySet: " + arraySet);
+            System.out.println("Max: " + arraySet.max());
+            System.out.println("Min: " + arraySet.min());
+            System.out.println();
+
+            assertEquals(arraySet.size(), control.size());
+        }
+    }
+
+    /**
+     * Runs many tests on BitSet and compares with a HashSet as a control
+     * @throws Exception just in case
+     */
+    @Test
+    public void bitSetTestRandom() throws Exception {
+        HashSet<Integer> control = new HashSet();
+        IntSet bitSet = new BitSet();
+
+        Random rnd = new Random();
+        for (int n = 0; n < 100; n++) {
+            for (int m = 0; m < rnd.nextInt(20); m++) {
+                int input = rnd.nextInt(100) - 50;
+                control.add(input);
+                bitSet.set(input);
+            }
+
+            assertEquals(bitSet.size(), control.size());
+
+            for (int m = 0; m < rnd.nextInt(10000000); m++) {
+                int input = rnd.nextInt(10000) - 50;
+                control.remove(input);
+                bitSet.clear(input);
+            }
+
+            for (int m : control) {
+                assertTrue(bitSet.test(m));
+            }
+
+            System.out.println("Control: " + control.toString());
+            System.out.println("BitSet: " + bitSet);
+            System.out.println("Max: " + bitSet.max());
+            System.out.println("Min: " + bitSet.min());
+            System.out.println();
+
+            assertEquals(bitSet.size(), control.size());
+
+        }
+    }
+}-------------------------------------------------
+Starting audit...
+Audit done.
+-------------------------------------------------
+commit c6caff2f2218d9b03efcf659594d88ac156ca83f
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 26 00:55:24 2017 -0800
+
+    Fixed small bug
+
+:100644 100644 f18b80e... 3a9267c... M	hw4/BitSet.java
+
+commit b99df5142aea2ecd272bbcd2eeb6d2b2279324bc
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 26 00:53:03 2017 -0800
+
+    Removed checkstyle
+
+:100644 000000 74bc5c7... 0000000... D	hw4/checkstyle_Ignore.xml
+
+commit d22c0634ce2caf39c1c724217f39d3e2b979f71e
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 26 00:52:09 2017 -0800
+
+    test
+
+:100644 100644 2aca057... 86c84fa... M	.gitignore
+
+commit e019a60d18ca45c6cafc414424c1eefd4f8723b3
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 26 00:50:09 2017 -0800
+
+    Finished javadocs
+
+:100644 100644 64ca004... a761167... M	hw4/SetTest.java
+:000000 100644 0000000... 74bc5c7... A	hw4/checkstyle_Ignore.xml
+
+commit f04ffc578a2895d8dfbe1a5ff29d140d97fdd7fc
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 26 00:39:29 2017 -0800
+
+    Added javadoc
+
+:100644 100644 165e25f... aa2dff8... M	hw4/ArraySet.java
+:100644 100644 e40d58d... f18b80e... M	hw4/BitSet.java
+:100644 100644 d7594db... 0e0db74... M	hw4/IntSet.java
+
+commit c71f93adf50726eed082d54bdc141fc23729c2f8
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 26 00:22:42 2017 -0800
+
+    Done with bitset
+
+:100644 100644 80925a7... e40d58d... M	hw4/BitSet.java
+:100644 100644 7a6774e... 64ca004... M	hw4/SetTest.java
+
+commit 0041b13b7e21b7eccfce9dcae87c11fdc131b01b
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Feb 26 00:02:55 2017 -0800
+
+    Progress on BitSet
+
+:100644 100644 4d605b4... 165e25f... M	hw4/ArraySet.java
+:100644 000000 cb14542... 0000000... D	hw4/ArraySetTest.java
+:000000 100644 0000000... 80925a7... A	hw4/BitSet.java
+:000000 100644 0000000... 7a6774e... A	hw4/SetTest.java
+
+commit a127bfe601e85f88c4e20e71c658eb8bd4e49f9e
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Thu Feb 23 14:10:05 2017 -0800
+
+    Implemented random test in arraySetTester
+
+:100644 100644 bf41db8... cb14542... M	hw4/ArraySetTest.java
+
+commit 5992a4f0cccca5e50c43fa46bfcf5310d740b167
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Wed Feb 22 15:21:56 2017 -0800
+
+    lab7 continued
+
+:100644 100644 1366178... bf41db8... M	hw4/ArraySetTest.java
+
+commit d4dc0d8c9b5a0553e4f7ad9e5f0c03e3efcf98cd
+Author: xiaofanlinus <graderxiaofanlin@gmail.com>
+Date:   Tue Feb 21 22:46:58 2017 -0800
+
+    hw3 graded
+
+:100644 100644 f0bb349... eb8416a... M	hw3scores.txt
+
+commit 148ef735c505424c113843c4396b9a28fcfdca84
+Author: Cay Horstmann <cay@horstmann.com>
+Date:   Tue Feb 21 16:35:43 2017 -0800
+
+    hw2
+
+:100644 100644 4712692... 8b203c2... M	hw2scores.txt
+
+commit 335b6727211858336462a29b93f0b7b86e6e2628
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Tue Feb 21 13:18:52 2017 -0800
+
+    Made progress on hw4
+
+:100644 100644 21fff03... 4d605b4... M	hw4/ArraySet.java
+:000000 100644 0000000... 1366178... A	hw4/ArraySetTest.java
+
+commit a868263522739306f07ebade70da2c11995aae05
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Tue Feb 21 13:07:03 2017 -0800
+
+    Started hw4
+
+:000000 100644 0000000... 21fff03... A	hw4/ArraySet.java
+:000000 100644 0000000... d7594db... A	hw4/IntSet.java
+
+commit fbda28d0ba186d0f087b3c34814264efd628b8db
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Tue Feb 21 12:29:11 2017 -0800
+
+    renamed lab6 to lab7
+
+:100644 000000 374981b... 0000000... D	lab6/HashSet.java
+:100644 000000 1ff9b0c... 0000000... D	lab6/HashSetTest.java
+:000000 100644 0000000... 374981b... A	lab7/HashSet.java
+:000000 100644 0000000... 1ff9b0c... A	lab7/HashSetTest.java
+
+commit 8c7911199acbcd19caef67e3bcd0efb81e56410c
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Mon Feb 20 23:13:12 2017 -0800
+
+    lab 6
+
+:100644 100644 9cd20ec... 1ff9b0c... M	lab6/HashSetTest.java
+
+commit 1fce60f377a0ef5444c53abfd3c6ff3bcec829ab
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Mon Feb 20 23:07:04 2017 -0800
+
+    lab 6
+
+:000000 100644 0000000... 374981b... A	lab6/HashSet.java
+:000000 100644 0000000... 9cd20ec... A	lab6/HashSetTest.java
+
+commit a0531876e5133e690cb50ea3d62c8cb91fd15ed9
+Author: Cay Horstmann <cay@horstmann.com>
+Date:   Mon Feb 20 09:35:06 2017 -0800
+
+    hw3
+
+:000000 100644 0000000... f0bb349... A	hw3scores.txt
