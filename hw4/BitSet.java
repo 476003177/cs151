@@ -24,6 +24,9 @@ public class BitSet implements IntSet {
     @Override
     public boolean test(int n)
     {
+        if (!startIsSet)
+            return false;
+
         int bitDistanceFromStart = n - start;
         int indexInElements = bitDistanceFromStart / 32;
         int bitIndexInPack = bitDistanceFromStart % 32;
@@ -63,6 +66,9 @@ public class BitSet implements IntSet {
     @Override
     public void clear(int n)
     {
+        if (!startIsSet)
+            return;
+
         int bitDistanceFromStart = n - start;
         int indexInElements = (int) Math.floor(bitDistanceFromStart / 32.0);
         int bitIndexInPack = bitDistanceFromStart % 32;
@@ -80,6 +86,9 @@ public class BitSet implements IntSet {
     @Override
     public int min()
     {
+        if (!startIsSet)
+            return 0;
+
         for (int i = 0; i < elements.length; i++) {
             for (int j = 0; j < 32; j++) {
                 if (test(elements[i], j))
@@ -93,6 +102,9 @@ public class BitSet implements IntSet {
     @Override
     public int max()
     {
+        if (!startIsSet)
+            return 0;
+
         for (int i = elements.length - 1; i >= 0; i--) {
             for (int j = 31; j >= 0; j--) {
                 if (test(elements[i], j))

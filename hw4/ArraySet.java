@@ -39,13 +39,13 @@ public class ArraySet implements IntSet {
     @Override
     public void clear(int n) {
         int elIndex = findElement(n);
-        boolean isSmallestOrLargest = elements[elIndex] == smallest || elements[elIndex] == largest;
 
         if (elIndex != -1) {
             elements[elIndex] = elements[elementCount - 1];
             elementCount--;
         }
 
+        boolean isSmallestOrLargest = elements[elIndex] == smallest || elements[elIndex] == largest;
         if (isSmallestOrLargest)
             updateMinAndMax();
     }
