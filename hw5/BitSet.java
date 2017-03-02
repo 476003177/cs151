@@ -112,7 +112,24 @@ public class BitSet implements IntSet
 
       @Override
       public boolean hasNext() {
-         return elementIndex < elements.length * 32;
+         if (elementIndex < 0 || elementIndex >= elements.length * 32)
+            return false;
+
+         int indexInElements = elementIndex / 32;
+         int bitIndexInPack = elementIndex % 32;
+
+         if (elements[indexInElements] > 0) {
+            for (int i = bitIndexInPack; i < 31; i++) {
+               if (test(elements[indexInElements], i))
+                  return true;
+            }
+         }
+
+         for (int i = indexInElements + 1; i < elements.length; i++) {
+            if (elements[i] > 0)
+               return true;
+         }
+         return false;
       }
 
       @Override
@@ -123,9 +140,19 @@ public class BitSet implements IntSet
          int indexInElements = elementIndex / 32;
          int bitIndexInPack = elementIndex % 32;
 
-         elementIndex++;
-
-         return start + (indexInElements * elements.length) + bitIndexInPack;
+         for (int i = indexInElements; i < elements.length; i++) {
+            if (elements[i] > 0) {
+               // Search in the pack
+               for (int j = bitIndexInPack; j < 31; j++) {
+                  if (test(elements[i], j)) {
+                     return start + elementIndex++;
+                  }
+               }
+            }
+            bitIndexInPack = 0; // After first iteration, it should be 0
+         }
+         // This should never happen
+         return null;
       }
 
       @Override
