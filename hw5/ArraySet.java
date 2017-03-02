@@ -1,7 +1,9 @@
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class ArraySet implements IntSet
 {
+
    public boolean test(int n)
    {
       if (n < smallest || n > largest) return false;
@@ -70,4 +72,27 @@ public class ArraySet implements IntSet
    int largest = Integer.MIN_VALUE;
    int[] elements;
    int elementCount;
+
+
+   private class ArraySetIterator implements Iterator<Integer> {
+
+      @Override
+      public boolean hasNext() {
+         return false;
+      }
+
+      @Override
+      public Integer next() {
+         return null;
+      }
+
+      private int modCount;
+      private int nextIndex;
+      private boolean afterNext;
+
+   }
+
+   public Iterator<Integer> iterator() {
+      return new ArraySetIterator();
+   }
 }
