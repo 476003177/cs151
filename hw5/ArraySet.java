@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArraySet implements IntSet
 {
@@ -76,23 +77,40 @@ public class ArraySet implements IntSet
 
    private class ArraySetIterator implements Iterator<Integer> {
 
+      public ArraySetIterator() {
+         index = 0;
+      }
+
       @Override
       public boolean hasNext() {
-         return false;
+         return index < elementCount;
       }
 
       @Override
       public Integer next() {
-         return null;
+         if (!hasNext())
+            throw new NoSuchElementException();
+
+         return elements[index++];
       }
 
-      private int modCount;
-      private int nextIndex;
-      private boolean afterNext;
+      @Override
+      public void remove() {
+         int indexToRemove = index - 1;
+
+         if (indexToRemove >= 0 && indexToRemove < elementCount)
+            clear(elements[index - 1]);
+      }
+
+      private int index;
 
    }
 
    public Iterator<Integer> iterator() {
       return new ArraySetIterator();
    }
+
+   private int modCount;
+   private int nextIndex;
+   private boolean afterNext;
 }

@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class BitSet implements IntSet
 {
@@ -101,4 +103,48 @@ public class BitSet implements IntSet
    int[] elements;
    int start;
    int elementCount;
+
+   private class BitSetIterator implements Iterator<Integer> {
+
+      public BitSetIterator() {
+         elementIndex = 0;
+      }
+
+      @Override
+      public boolean hasNext() {
+         return elementIndex < elements.length * 32;
+      }
+
+      @Override
+      public Integer next() {
+         if (!hasNext())
+            throw new NoSuchElementException();
+
+         int indexInElements = elementIndex / 32;
+         int bitIndexInPack = elementIndex % 32;
+
+         elementIndex++;
+
+         return start + (indexInElements * elements.length) + bitIndexInPack;
+      }
+
+      @Override
+      public void remove() {
+         int indexToRemove = elementIndex - 1;
+
+         int indexInElements = indexToRemove / 32;
+         int bitIndexInPack = indexToRemove % 32;
+
+         if (indexInElements >= 0 && indexInElements < elements.length)
+            clear(indexInElements, bitIndexInPack);
+      }
+
+      private int elementIndex;
+
+   }
+
+   public Iterator<Integer> iterator() {
+      return new BitSetIterator();
+   }
+
 }
