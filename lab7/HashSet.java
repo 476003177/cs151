@@ -7,6 +7,7 @@ import java.util.AbstractSet;
 */
 public class HashSet extends AbstractSet
 {
+
    /**
       Constructs a hash table.
       @param bucketsLength the length of the buckets array

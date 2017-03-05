@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Random;
 
 import static org.junit.Assert.*;

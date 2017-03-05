@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -40,6 +41,7 @@ public class BitSet implements IntSet
       int i = (n - start) % 32;
       if (!test(elements[p], i)) 
       {
+         modCount++;
          elementCount++;
          elements[p] = set(elements[p], i);      
       }
@@ -53,6 +55,7 @@ public class BitSet implements IntSet
          int i = (n - start) % 32;
          if (test(elements[p], i)) 
          {
+            modCount++;
             elementCount--;
             elements[p] = clear(elements[p], i);
          }
@@ -100,26 +103,28 @@ public class BitSet implements IntSet
       return n & ~(1 << i);
    }
 
-   int[] elements;
-   int start;
-   int elementCount;
-
    private class BitSetIterator implements Iterator<Integer> {
 
+      private int nextElementIndex;
+      private int expectedModCount;
+      private boolean lastCalledNext;
+
       public BitSetIterator() {
-         elementIndex = 0;
+         nextElementIndex = 0;
+         expectedModCount = modCount;
+         lastCalledNext = false;
       }
 
       @Override
       public boolean hasNext() {
-         if (elementIndex < 0 || elementIndex >= elements.length * 32)
+         if (nextElementIndex < 0 || nextElementIndex >= elements.length * 32)
             return false;
 
-         int indexInElements = elementIndex / 32;
-         int bitIndexInPack = elementIndex % 32;
+         int indexInElements = nextElementIndex / 32;
+         int bitIndexInPack = nextElementIndex % 32;
 
          if (elements[indexInElements] > 0) {
-            for (int i = bitIndexInPack; i < 31; i++) {
+            for (int i = bitIndexInPack; i < 32; i++) {
                if (test(elements[indexInElements], i))
                   return true;
             }
@@ -134,21 +139,27 @@ public class BitSet implements IntSet
 
       @Override
       public Integer next() {
+         lastCalledNext = true;
+
          if (!hasNext())
             throw new NoSuchElementException();
+         else if (modCount != expectedModCount)
+            throw new ConcurrentModificationException();
 
-         int indexInElements = elementIndex / 32;
-         int bitIndexInPack = elementIndex % 32;
+         int indexInElements = nextElementIndex / 32;
+         int bitIndexInPack = nextElementIndex % 32;
 
          for (int i = indexInElements; i < elements.length; i++) {
-            if (elements[i] > 0) {
+            if (elements[i] != 0) {
                // Search in the pack
-               for (int j = bitIndexInPack; j < 31; j++) {
+               for (int j = bitIndexInPack; j < 32; j++) {
                   if (test(elements[i], j)) {
-                     return start + elementIndex++;
+                     nextElementIndex = (i * 32) + j;
+                     return start + nextElementIndex++;
                   }
                }
             }
+
             bitIndexInPack = 0; // After first iteration, it should be 0
          }
          // This should never happen
@@ -157,21 +168,36 @@ public class BitSet implements IntSet
 
       @Override
       public void remove() {
-         int indexToRemove = elementIndex - 1;
+         if (!lastCalledNext)
+            throw new IllegalStateException("Remove must only be called right after next has been called.");
+         else if (modCount != expectedModCount)
+            throw new ConcurrentModificationException();
+         else
+            lastCalledNext = false;
 
-         int indexInElements = indexToRemove / 32;
-         int bitIndexInPack = indexToRemove % 32;
+         int elementIndexToRemove = nextElementIndex - 1;
 
-         if (indexInElements >= 0 && indexInElements < elements.length)
-            clear(indexInElements, bitIndexInPack);
+         int indexInElements = elementIndexToRemove / 32;
+         int bitIndexInPack = elementIndexToRemove % 32;
+
+         try {
+            elements[indexInElements] = clear(elements[indexInElements], bitIndexInPack);
+            elementCount--;
+            expectedModCount = ++modCount;
+         } catch (ArrayIndexOutOfBoundsException ex) {
+            throw new ConcurrentModificationException();
+         }
       }
-
-      private int elementIndex;
 
    }
 
    public Iterator<Integer> iterator() {
       return new BitSetIterator();
    }
+
+   int[] elements;
+   int start;
+   int elementCount;
+   private int modCount;
 
 }

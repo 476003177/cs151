@@ -1,9 +1,17 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ArraySet implements IntSet
 {
+
+   int smallest = Integer.MAX_VALUE;
+   int largest = Integer.MIN_VALUE;
+   int[] elements;
+   int elementCount;
+   private int modCount;
 
    public boolean test(int n)
    {
@@ -20,6 +28,7 @@ public class ArraySet implements IntSet
          {
             elements[i] = elements[elementCount - 1];
             elementCount--;
+            modCount++;
             if (n == smallest)
             {
                smallest = Integer.MAX_VALUE;
@@ -51,6 +60,7 @@ public class ArraySet implements IntSet
          smallest = Math.min(smallest, n);
          largest = Math.max(largest, n);
          elementCount++;
+         modCount++;
       }
    }
    
@@ -68,49 +78,88 @@ public class ArraySet implements IntSet
    {
       return elementCount;
    }
-   
-   int smallest = Integer.MAX_VALUE;
-   int largest = Integer.MIN_VALUE;
-   int[] elements;
-   int elementCount;
 
 
-   private class ArraySetIterator implements Iterator<Integer> {
 
-      public ArraySetIterator() {
-         index = 0;
+   /**
+    * Finds the new minimum and maximum with a simple brute force search
+    */
+   private void updateMinAndMax() {
+      if (elementCount <= 0)
+         return;
+
+      int min = elements[0];
+      int max = elements[0];
+      for (int i = 0; i < elementCount; i++) {
+         if (elements[i] < min)
+            min = elements[i];
+
+         if (elements[i] > max)
+            max = elements[i];
       }
 
-      @Override
-      public boolean hasNext() {
-         return index < elementCount;
-      }
-
-      @Override
-      public Integer next() {
-         if (!hasNext())
-            throw new NoSuchElementException();
-
-         return elements[index++];
-      }
-
-      @Override
-      public void remove() {
-         int indexToRemove = index - 1;
-
-         if (indexToRemove >= 0 && indexToRemove < elementCount)
-            clear(elements[index - 1]);
-      }
-
-      private int index;
-
+      smallest = min;
+      largest = max;
    }
 
    public Iterator<Integer> iterator() {
       return new ArraySetIterator();
    }
 
-   private int modCount;
-   private int nextIndex;
-   private boolean afterNext;
+   private class ArraySetIterator implements Iterator<Integer> {
+
+      private int nextIndex;
+      private int expectedModCount;
+      private boolean lastCalledNext;
+
+      public ArraySetIterator() {
+         nextIndex = 0;
+         expectedModCount = modCount;
+         lastCalledNext = false;
+      }
+
+      @Override
+      public boolean hasNext() {
+         return nextIndex < elementCount;
+      }
+
+      @Override
+      public Integer next() {
+         if (!hasNext())
+            throw new NoSuchElementException();
+         else if (modCount != expectedModCount)
+            throw new ConcurrentModificationException();
+         else
+            lastCalledNext = true;
+
+         try {
+            return elements[nextIndex++];
+         } catch (ArrayIndexOutOfBoundsException ex) {
+            throw new ConcurrentModificationException();
+         }
+      }
+
+      @Override
+      public void remove() {
+         if (!lastCalledNext)
+            throw new IllegalStateException("Remove must only be called right after next has been called.");
+         else if (modCount != expectedModCount)
+            throw new ConcurrentModificationException();
+         else
+            lastCalledNext = false;
+
+         try {
+            int elementRemoved = (elements[nextIndex - 1] = elements[elementCount - 1]);
+            expectedModCount = ++modCount;
+            elementCount--;
+
+            if (elementRemoved == smallest || elementRemoved == largest)
+               updateMinAndMax();
+         } catch (ArrayIndexOutOfBoundsException ex) {
+            throw new ConcurrentModificationException();
+         }
+      }
+
+   }
+
 }
