@@ -125,10 +125,10 @@ public class ArraySet implements IntSet
 
       @Override
       public Integer next() {
-         if (!hasNext())
-            throw new NoSuchElementException();
-         else if (modCount != expectedModCount)
+         if (modCount != expectedModCount)
             throw new ConcurrentModificationException();
+         else if (!hasNext())
+            throw new NoSuchElementException();
          else
             lastCalledNext = true;
 

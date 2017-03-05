@@ -1,10 +1,6 @@
-import org.hamcrest.collection.IsArray;
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.TreeSet;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -177,6 +173,37 @@ public class IteratorTest {
     }
 
     /**
+     * ArraySet test adding while iterating
+     */
+    @Test(expected = ConcurrentModificationException.class)
+    public void arraySetAddingWhileIterating() {
+        ArraySet arraySet = new ArraySet();
+
+        for (int n = 0; n < 10; n++)
+            arraySet.set(n);
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        arraySet.set(40);
+        iterator.next();
+    }
+
+    /**
+     * ArraySet test clearing while iterating
+     */
+    @Test(expected = ConcurrentModificationException.class)
+    public void arraySetClearingWhileIterating() {
+        ArraySet arraySet = new ArraySet();
+
+        for (int n = 0; n < 10; n++)
+            arraySet.set(n);
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        iterator.next();
+        arraySet.clear(2);
+        iterator.remove();
+    }
+
+    /**
      * BitSet iterate through all elements test.
      */
     @Test
@@ -337,6 +364,37 @@ public class IteratorTest {
         iterator.next();
         iterator.next();
         iterator.remove();
+        iterator.remove();
+    }
+
+    /**
+     * BitSet test adding while iterating
+     */
+    @Test(expected = ConcurrentModificationException.class)
+    public void bitSetAddingWhileIterating() {
+        BitSet bitSet = new BitSet();
+
+        for (int n = 0; n < 10; n++)
+            bitSet.set(n);
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        bitSet.set(40);
+        iterator.next();
+    }
+
+    /**
+     * BitSet test clearing while iterating
+     */
+    @Test(expected = ConcurrentModificationException.class)
+    public void bitSetClearingWhileIterating() {
+        BitSet bitSet = new BitSet();
+
+        for (int n = 0; n < 10; n++)
+            bitSet.set(n);
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        iterator.next();
+        bitSet.clear(2);
         iterator.remove();
     }
 

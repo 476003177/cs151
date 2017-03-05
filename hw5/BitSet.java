@@ -117,7 +117,7 @@ public class BitSet implements IntSet
 
       @Override
       public boolean hasNext() {
-         if (nextElementIndex < 0 || nextElementIndex >= elements.length * 32)
+         if (elements == null || nextElementIndex < 0 || nextElementIndex >= elements.length * 32)
             return false;
 
          int indexInElements = nextElementIndex / 32;
@@ -139,12 +139,12 @@ public class BitSet implements IntSet
 
       @Override
       public Integer next() {
-         lastCalledNext = true;
-
-         if (!hasNext())
-            throw new NoSuchElementException();
-         else if (modCount != expectedModCount)
+         if (modCount != expectedModCount)
             throw new ConcurrentModificationException();
+         else if (!hasNext())
+            throw new NoSuchElementException();
+         else
+            lastCalledNext = true;
 
          int indexInElements = nextElementIndex / 32;
          int bitIndexInPack = nextElementIndex % 32;
