@@ -4,6 +4,9 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 
+/**
+ * For testing ArraySet and BitSet iterators
+ */
 public class IteratorTest {
 
     /**

@@ -13,8 +13,8 @@ public interface IntSequence {
 
     /**
      * Turns Iterator\<Integer\> into an IntSequence
-     * @param iterator
-     * @return
+     * @param iterator the iterator to turn into an IntSequence
+     * @return the IntSequence created from the iterator.
      */
     public static IntSequence fromIterator(Iterator<Integer> iterator) {
         return () -> (iterator.hasNext() ? iterator.next() : null);

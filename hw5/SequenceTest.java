@@ -1,6 +1,9 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+/**
+ * For testing the IntSequence class
+ */
 public class SequenceTest {
 
     /**
