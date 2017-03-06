@@ -1,8 +1,5 @@
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * A set of integers implemented with an array
@@ -113,6 +110,7 @@ public class ArraySet implements IntSet {
         private int nextIndex;
         private int expectedModCount;
         private boolean lastCalledNext;
+        List<Integer> removedIndexes;
 
         /**
          * Initializes instance variables
@@ -121,11 +119,12 @@ public class ArraySet implements IntSet {
             nextIndex = 0;
             expectedModCount = modCount;
             lastCalledNext = false;
+            removedIndexes = new ArrayList<>();
         }
 
         @Override
         public boolean hasNext() {
-            return nextIndex < elementCount;
+            return nextIndex < elementCount + removedIndexes.size();
         }
 
         @Override
@@ -136,6 +135,13 @@ public class ArraySet implements IntSet {
                 throw new NoSuchElementException();
             else
                 lastCalledNext = true;
+
+            try {
+                if (nextIndex >= elementCount)
+                    return removedIndexes.remove(0);
+            } catch (NullPointerException ex) {
+                throw new ConcurrentModificationException();
+            }
 
             try {
                 return elements[nextIndex++];
@@ -155,6 +161,7 @@ public class ArraySet implements IntSet {
 
             try {
                 int elementRemoved = (elements[nextIndex - 1] = elements[elementCount - 1]);
+                removedIndexes.add(nextIndex - 1);
                 expectedModCount = ++modCount;
                 elementCount--;
 
