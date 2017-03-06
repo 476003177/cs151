@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 /**
  * An interface for sets containing integers
  */
@@ -39,4 +41,10 @@ public interface IntSet
     * @return the number of elements in the set
     */
    int size();
+
+   /**
+    * Iterator
+    * @return Iterator of integers
+    */
+   Iterator<Integer> iterator();
 }
