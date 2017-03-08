@@ -1,0 +1,3 @@
+1. No it is not, because the Iterator class doesn't actually notify and there is no observer interface type, and the list doesn't aggregate the observers.
+
+2. Sliders don't really have element objects, so it is not an iterator.
