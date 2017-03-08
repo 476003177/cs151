@@ -44,19 +44,34 @@ public class ArraySet implements IntSet
          {
             elements = Arrays.copyOf(elements, 2 * elements.length);
          }
-         elements[elementCount] = n;
+         insertInto();
          smallest = Math.min(smallest, n);
          largest = Math.max(largest, n);
          elementCount++;
       }
    }
 
+   private void insertInto(int n, int index) {
+      elements[index + 1] = elements[index2];
+      elements[index2] = temp;
+   }
+
    private int findWhereElementShouldBeAdded(int el) {
       int min = 0;
       int max = elementCount;
 
-      int i = elementCount
+      int i = 0;
+      do {
+         i = Math.max(0, max - min / 2);
+         if (elements[i] >= el) {
+            max = i;
+         } else {
+            min = i;
+         }
+      }
+      while ((max - min > 0) && elements[i] != el);
 
+      return i;
    }
    
    public int min()

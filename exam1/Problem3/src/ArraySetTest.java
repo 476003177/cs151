@@ -1,6 +1,8 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
    Tests the ArraySet implementation.
  */
@@ -128,5 +130,12 @@ public class ArraySetTest
       assertEquals(10, set.elements.length);
       set.set(121);
       assertEquals(20, set.elements.length);
+   }
+
+   @Test public void binary() {
+      ArraySet set = new ArraySet();
+      set.set(3);
+      set.set(1);
+      System.out.println(Arrays.toString(set.elements));
    }
 }
