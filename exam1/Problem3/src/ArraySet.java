@@ -13,9 +13,11 @@ public class ArraySet implements IntSet
    public void clear(int n) 
    {
       for (int i = 0; i < elementCount; i++)
-         if (elements[i] == n) 
+         if (elements[i] == n)
          {
-            elements[i] = elements[elementCount - 1];
+            elements[i] = 0;
+            for (int j = elementCount - 1; j > i && j > 0; j++)
+               elements[i] = elements[j];
             elementCount--;
             if (n == smallest)
             {
@@ -44,7 +46,18 @@ public class ArraySet implements IntSet
          {
             elements = Arrays.copyOf(elements, 2 * elements.length);
          }
-         insertInto();
+         int p = Arrays.binarySearch(elements, 0, elementCount, n);
+         if (p >= 0)
+         {
+            // n is present in elements[p]
+         }
+         else
+         {
+            p = -p - 1;
+            // n needs to be inserted before p
+         }
+         System.arraycopy(elements, p, elements, p + 1, elementCount - p);
+         elements[p] = n;
          smallest = Math.min(smallest, n);
          largest = Math.max(largest, n);
          elementCount++;
@@ -52,8 +65,6 @@ public class ArraySet implements IntSet
    }
 
    private void insertInto(int n, int index) {
-      elements[index + 1] = elements[index2];
-      elements[index2] = temp;
    }
 
    private int findWhereElementShouldBeAdded(int el) {
