@@ -1,0 +1,830 @@
+Student: wasniowski_tyler
+ArraySetTest passes (max 5, -1 per failure, min 0): 4
+BitSetTest passes (max 5, -1 per failure, min 0): 5
+IntSeqTest passes (max 5, -1 per failure, min 0): 5
+IntSequence.fromIterator returns lambda expressions (max 2): 2
+Provides IteratorTest, SequenceTest with at least 3 test cases each (max 3): 3  
+No CheckStyle issues (max 3): 0
+Clean submission directory (no .class, .metadata etc.) (max 3): 3
+At least 3 git checkins (max 3): 3
+-------------------------------------------------
+ArraySetTest.java
+JUnit version 4.11
+......E..
+Time: 0.017
+There was 1 failure:
+1) removeTest(ArraySetTest)
+java.util.NoSuchElementException
+	at ArraySet$ArraySetIterator.next(ArraySet.java:136)
+	at ArraySet$ArraySetIterator.next(ArraySet.java:111)
+	at ArraySetTest.removeTest(ArraySetTest.java:43)
+
+FAILURES!!!
+Tests run: 8,  Failures: 1
+
+-------------------------------------------------
+BitSetTest.java
+JUnit version 4.11
+.......
+Time: 0.013
+
+OK (7 tests)
+
+-------------------------------------------------
+IntSeqTest.java
+JUnit version 4.11
+.........
+Time: 0.1
+
+OK (9 tests)
+
+-------------------------------------------------
+IteratorTest.java
+JUnit version 4.11
+................
+Time: 0.063
+
+OK (16 tests)
+
+-------------------------------------------------
+SequenceTest.java
+JUnit version 4.11
+......
+Time: 0.11
+
+OK (6 tests)
+
+-------------------------------------------------
+import org.junit.Test;
+
+import java.util.*;
+
+import static org.junit.Assert.*;
+
+/**
+ * For testing ArraySet and BitSet iterators
+ */
+public class IteratorTest {
+
+    /**
+     * ArraySet iterate through all elements test.
+     */
+    @Test
+    public void arraySetIterateThroughAllElements() {
+        final int EL_START = -100; // Inclusive
+        final int EL_END = 1000; // Exclusive
+
+        ArraySet arraySet = new ArraySet();
+
+        for (int n = EL_START; n < EL_END; n++)
+            arraySet.set(n);
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        for (int n = EL_START; iterator.hasNext(); n++)
+            assertEquals(n, iterator.next().intValue());
+    }
+
+    /**
+     * ArraySet iterate through all elements test.
+     */
+    @Test
+    public void arraySetIterateThroughAllElementsRandom() {
+        final int NUM_ELS = 500;
+        final int MAX_NUM = 1000;
+
+        ArraySet arraySet = new ArraySet();
+        TreeSet<Integer> control = new TreeSet<>();
+
+        Random rnd = new Random();
+        for (int n = 0; n < NUM_ELS; n++) {
+            int numToAdd = rnd.nextInt(MAX_NUM * 2) - MAX_NUM;
+
+            arraySet.set(numToAdd);
+            control.add(numToAdd);
+        }
+
+        assertEquals(arraySet.size(), control.size());
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        Iterator<Integer> controlIterator = control.iterator();
+        while (iterator.hasNext()) {
+            assertTrue(control.contains(iterator.next()));
+        }
+        while (controlIterator.hasNext()) {
+            assertTrue(arraySet.test(controlIterator.next()));
+        }
+
+        for (int n = -MAX_NUM; n < MAX_NUM; n++)
+            assertTrue(arraySet.test(n) == control.contains(n));
+
+    }
+
+    /**
+     * ArraySet iterator test remove
+     */
+    @Test
+    public void arraySetRemove() {
+        final int EL_START = 0; // Inclusive
+        final int EL_END = 10; // Exclusive
+
+        ArraySet arraySet = new ArraySet();
+        TreeSet<Integer> control = new TreeSet<>();
+
+        for (int n = EL_START; n < EL_END; n++) {
+            arraySet.set(n);
+            control.add(n);
+        }
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        iterator.next(); // 0
+        iterator.remove();
+        iterator.next(); // 1
+        iterator.remove();
+        iterator.next(); // 2
+        iterator.next(); // 3
+        iterator.next(); // 4
+        iterator.remove();
+
+        Iterator<Integer> controlIterator = control.iterator();
+        controlIterator.next(); // 0
+        controlIterator.remove();
+        controlIterator.next(); // 1
+        controlIterator.remove();
+        controlIterator.next(); // 2
+        controlIterator.next(); // 3
+        controlIterator.next(); // 4
+        controlIterator.remove();
+
+
+        while (iterator.hasNext())
+            assertEquals(controlIterator.next(), iterator.next());
+
+        for (int n = EL_START; n < EL_END; n++)
+            assertEquals(control.contains(n), arraySet.test(n));
+    }
+
+    /**
+     * ArraySet test remove with randomness
+     */
+    @Test
+    public void arraySetRemoveRandom() {
+        final int NUM_ELS = 100;
+        final int MAX_NUM = 1000;
+        final double CHANCE_TO_REMOVE = 0.25;
+
+        ArraySet arraySet = new ArraySet();
+        TreeSet<Integer> control = new TreeSet<>();
+
+        Random rnd = new Random();
+        for (int n = 0; n < NUM_ELS; n++) {
+            int numToAdd = rnd.nextInt(MAX_NUM * 2) - MAX_NUM;
+
+            arraySet.set(numToAdd);
+            control.add(numToAdd);
+        }
+
+        assertEquals(arraySet.size(), control.size());
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        while (iterator.hasNext()) {
+            int next = iterator.next();
+            assertTrue(control.contains(next));
+            if (rnd.nextInt((int) Math.round(1/CHANCE_TO_REMOVE)) == 0) {
+                iterator.remove();
+                control.remove(next);
+            }
+        }
+
+        assertEquals(control.size(), arraySet.size());
+
+        for (int n = -MAX_NUM; n < MAX_NUM; n++)
+            assertTrue(arraySet.test(n) == control.contains(n));
+    }
+
+    /**
+     * ArraySet iterator test remove throwing exception when first called
+     */
+    @Test(expected = IllegalStateException.class)
+    public void arraySetRemoveBeforeCallingNext() {
+        ArraySet arraySet = new ArraySet();
+
+        for (int n = 0; n < 10; n++)
+            arraySet.set(n);
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        iterator.remove();
+    }
+
+    /**
+     * ArraySet iterator test remove throwing exception when remove is called twice in a row
+     */
+    @Test(expected = IllegalStateException.class)
+    public void arraySetRemoveTwiceInARow() {
+        ArraySet arraySet = new ArraySet();
+
+        for (int n = 0; n < 10; n++)
+            arraySet.set(n);
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        iterator.next();
+        iterator.next();
+        iterator.remove();
+        iterator.remove();
+    }
+
+    /**
+     * ArraySet test adding while iterating
+     */
+    @Test(expected = ConcurrentModificationException.class)
+    public void arraySetAddingWhileIterating() {
+        ArraySet arraySet = new ArraySet();
+
+        for (int n = 0; n < 10; n++)
+            arraySet.set(n);
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        arraySet.set(40);
+        iterator.next();
+    }
+
+    /**
+     * ArraySet test clearing while iterating
+     */
+    @Test(expected = ConcurrentModificationException.class)
+    public void arraySetClearingWhileIterating() {
+        ArraySet arraySet = new ArraySet();
+
+        for (int n = 0; n < 10; n++)
+            arraySet.set(n);
+
+        Iterator<Integer> iterator = arraySet.iterator();
+        iterator.next();
+        arraySet.clear(2);
+        iterator.remove();
+    }
+
+    /**
+     * BitSet iterate through all elements test.
+     */
+    @Test
+    public void bitSetIterateThroughAllElements() {
+        final int EL_START = -100; // Inclusive
+        final int EL_END = 1000; // Exclusive
+
+        BitSet bitSet = new BitSet();
+
+
+        for (int n = EL_START; n < EL_END; n++)
+            bitSet.set(n);
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        for (int n = EL_START; iterator.hasNext(); n++)
+            assertEquals(n, iterator.next().intValue());
+    }
+
+    /**
+     * BitSet iterate through all elements test.
+     */
+    @Test
+    public void bitSetIterateThroughAllElementsRandom() {
+        final int NUM_ELS = 100;
+        final int MAX_NUM = 1000;
+
+        BitSet bitSet = new BitSet();
+        TreeSet<Integer> control = new TreeSet<>();
+
+        Random rnd = new Random();
+        for (int n = 0; n < NUM_ELS; n++) {
+            int numToAdd = rnd.nextInt(MAX_NUM * 2) - MAX_NUM;
+
+            bitSet.set(numToAdd);
+            control.add(numToAdd);
+        }
+
+        assertEquals(bitSet.size(), control.size());
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        Iterator<Integer> controlIterator = control.iterator();
+        while (iterator.hasNext()) {
+            assertEquals(controlIterator.next(), iterator.next());
+        }
+
+        for (int n = -MAX_NUM; n < MAX_NUM; n++)
+            assertTrue(bitSet.test(n) == control.contains(n));
+
+    }
+
+    /**
+     * BitSet iterator test remove
+     */
+    @Test
+    public void bitSetRemove() {
+        final int EL_START = 0; // Inclusive
+        final int EL_END = 10; // Exclusive
+
+        BitSet bitSet = new BitSet();
+        TreeSet<Integer> control = new TreeSet<>();
+
+        for (int n = EL_START; n < EL_END; n++) {
+            bitSet.set(n);
+            control.add(n);
+        }
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        iterator.next(); // 0
+        iterator.remove();
+        iterator.next(); // 1
+        iterator.remove();
+        iterator.next(); // 2
+        iterator.next(); // 3
+        iterator.next(); // 4
+        iterator.remove();
+
+        Iterator<Integer> controlIterator = control.iterator();
+        controlIterator.next(); // 0
+        controlIterator.remove();
+        controlIterator.next(); // 1
+        controlIterator.remove();
+        controlIterator.next(); // 2
+        controlIterator.next(); // 3
+        controlIterator.next(); // 4
+        controlIterator.remove();
+
+
+        while (iterator.hasNext())
+            assertEquals(controlIterator.next(), iterator.next());
+
+        for (int n = EL_START; n < EL_END; n++)
+            assertEquals(control.contains(n), bitSet.test(n));
+    }
+
+    /**
+     * BitSet test remove with randomness
+     */
+    @Test
+    public void bitSetRemoveRandom() {
+        final int NUM_ELS = 100;
+        final int MAX_NUM = 1000;
+        final double CHANCE_TO_REMOVE = 0.25;
+
+        BitSet bitSet = new BitSet();
+        TreeSet<Integer> control = new TreeSet<>();
+
+        Random rnd = new Random();
+        for (int n = 0; n < NUM_ELS; n++) {
+            int numToAdd = rnd.nextInt(MAX_NUM * 2) - MAX_NUM;
+
+            bitSet.set(numToAdd);
+            control.add(numToAdd);
+        }
+
+        assertEquals(bitSet.size(), control.size());
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        Iterator<Integer> controlIterator = control.iterator();
+        while (iterator.hasNext()) {
+            assertEquals(controlIterator.next(), iterator.next());
+            if (rnd.nextInt((int) Math.round(1/CHANCE_TO_REMOVE)) == 0) {
+                iterator.remove();
+                controlIterator.remove();
+            }
+        }
+
+        assertEquals(control.size(), bitSet.size());
+
+        for (int n = -MAX_NUM; n < MAX_NUM; n++)
+            assertTrue(bitSet.test(n) == control.contains(n));
+    }
+
+    /**
+     * BitSet iterator test remove throwing exception when first called
+     */
+    @Test(expected = IllegalStateException.class)
+    public void bitSetRemoveBeforeCallingNext() {
+        BitSet bitSet = new BitSet();
+
+        for (int n = 0; n < 10; n++)
+            bitSet.set(n);
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        iterator.remove();
+    }
+
+    /**
+     * BitSet iterator test remove throwing exception when remove is called twice in a row
+     */
+    @Test(expected = IllegalStateException.class)
+    public void bitSetRemoveTwiceInARow() {
+        BitSet bitSet = new BitSet();
+
+        for (int n = 0; n < 10; n++)
+            bitSet.set(n);
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        iterator.next();
+        iterator.next();
+        iterator.remove();
+        iterator.remove();
+    }
+
+    /**
+     * BitSet test adding while iterating
+     */
+    @Test(expected = ConcurrentModificationException.class)
+    public void bitSetAddingWhileIterating() {
+        BitSet bitSet = new BitSet();
+
+        for (int n = 0; n < 10; n++)
+            bitSet.set(n);
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        bitSet.set(40);
+        iterator.next();
+    }
+
+    /**
+     * BitSet test clearing while iterating
+     */
+    @Test(expected = ConcurrentModificationException.class)
+    public void bitSetClearingWhileIterating() {
+        BitSet bitSet = new BitSet();
+
+        for (int n = 0; n < 10; n++)
+            bitSet.set(n);
+
+        Iterator<Integer> iterator = bitSet.iterator();
+        iterator.next();
+        bitSet.clear(2);
+        iterator.remove();
+    }
+
+} 
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+/**
+ * For testing the IntSequence class
+ */
+public class SequenceTest {
+
+    /**
+     * Horstmann's test on hw5
+     */
+    @Test
+    public void testAlternateHorstmann() {
+        BitSet bitSet = new BitSet();
+        ArraySet arraySet = new ArraySet();
+
+        bitSet.set(1);
+        bitSet.set(2);
+        bitSet.set(4);
+        bitSet.set(8);
+        bitSet.set(11);
+
+        arraySet.set(7);
+        arraySet.set(5);
+        arraySet.set(9);
+
+        IntSequence bitSetSequence = IntSequence.fromIterator(bitSet.iterator());
+        IntSequence arraySetSequence = IntSequence.fromIterator(arraySet.iterator());
+
+        IntSequence alternateSequence = bitSetSequence.alternate(arraySetSequence);
+
+        assertEquals(1, alternateSequence.next().intValue());
+        assertEquals(7, alternateSequence.next().intValue());
+        assertEquals(2, alternateSequence.next().intValue());
+        assertEquals(5, alternateSequence.next().intValue());
+        assertEquals(4, alternateSequence.next().intValue());
+        assertEquals(9, alternateSequence.next().intValue());
+        assertEquals(8, alternateSequence.next().intValue());
+        assertEquals(11, alternateSequence.next().intValue());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+    }
+
+    /**
+     * Test first sequence empty
+     */
+    @Test
+    public void testAlternateFirstSequenceEmpty() {
+        BitSet bitSet = new BitSet();
+        ArraySet arraySet = new ArraySet();
+
+        arraySet.set(7);
+        arraySet.set(5);
+        arraySet.set(9);
+
+        IntSequence bitSetSequence = IntSequence.fromIterator(bitSet.iterator());
+        IntSequence arraySetSequence = IntSequence.fromIterator(arraySet.iterator());
+
+        IntSequence alternateSequence = bitSetSequence.alternate(arraySetSequence);
+
+        assertEquals(7, alternateSequence.next().intValue());
+        assertEquals(5, alternateSequence.next().intValue());
+        assertEquals(9, alternateSequence.next().intValue());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+    }
+
+    /**
+     * Test other sequence empty
+     */
+    @Test
+    public void testAlternateOtherSequenceEmpty() {
+        BitSet bitSet = new BitSet();
+        ArraySet arraySet = new ArraySet();
+
+        bitSet.set(1);
+        bitSet.set(2);
+        bitSet.set(4);
+        bitSet.set(8);
+        bitSet.set(11);
+
+        IntSequence bitSetSequence = IntSequence.fromIterator(bitSet.iterator());
+        IntSequence arraySetSequence = IntSequence.fromIterator(arraySet.iterator());
+
+        IntSequence alternateSequence = bitSetSequence.alternate(arraySetSequence);
+
+        assertEquals(1, alternateSequence.next().intValue());
+        assertEquals(2, alternateSequence.next().intValue());
+        assertEquals(4, alternateSequence.next().intValue());
+        assertEquals(8, alternateSequence.next().intValue());
+        assertEquals(11, alternateSequence.next().intValue());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+    }
+
+    /**
+     * Test only one element in first sequence
+     */
+    @Test
+    public void testAlternateOneElementFirstSequence() {
+        BitSet bitSet = new BitSet();
+        ArraySet arraySet = new ArraySet();
+
+        bitSet.set(1);
+
+        IntSequence bitSetSequence = IntSequence.fromIterator(bitSet.iterator());
+        IntSequence arraySetSequence = IntSequence.fromIterator(arraySet.iterator());
+
+        IntSequence alternateSequence = bitSetSequence.alternate(arraySetSequence);
+
+        assertEquals(1, alternateSequence.next().intValue());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+    }
+
+    /**
+     * Test only one element in other sequence
+     */
+    @Test
+    public void testAlternateOneElementOtherSequence() {
+        BitSet bitSet = new BitSet();
+        ArraySet arraySet = new ArraySet();
+
+        arraySet.set(7);
+
+        IntSequence bitSetSequence = IntSequence.fromIterator(bitSet.iterator());
+        IntSequence arraySetSequence = IntSequence.fromIterator(arraySet.iterator());
+
+        IntSequence alternateSequence = bitSetSequence.alternate(arraySetSequence);
+
+        assertEquals(7, alternateSequence.next().intValue());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+    }
+
+    /**
+     * Test other sequence longer
+     */
+    @Test
+    public void testAlternateOtherSequenceLonger() {
+        BitSet bitSet = new BitSet();
+        ArraySet arraySet = new ArraySet();
+
+        bitSet.set(2);
+        bitSet.set(4);
+        bitSet.set(8);
+        bitSet.set(11);
+
+        arraySet.set(7);
+        arraySet.set(5);
+        arraySet.set(9);
+        arraySet.set(10);
+        arraySet.set(1);
+        arraySet.set(25);
+        arraySet.set(17);
+
+        IntSequence bitSetSequence = IntSequence.fromIterator(bitSet.iterator());
+        IntSequence arraySetSequence = IntSequence.fromIterator(arraySet.iterator());
+
+        IntSequence alternateSequence = bitSetSequence.alternate(arraySetSequence);
+
+        assertEquals(2, alternateSequence.next().intValue());
+        assertEquals(7, alternateSequence.next().intValue());
+        assertEquals(4, alternateSequence.next().intValue());
+        assertEquals(5, alternateSequence.next().intValue());
+        assertEquals(8, alternateSequence.next().intValue());
+        assertEquals(9, alternateSequence.next().intValue());
+        assertEquals(11, alternateSequence.next().intValue());
+        assertEquals(10, alternateSequence.next().intValue());
+        assertEquals(1, alternateSequence.next().intValue());
+        assertEquals(25, alternateSequence.next().intValue());
+        assertEquals(17, alternateSequence.next().intValue());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+        assertEquals(null, alternateSequence.next());
+    }
+
+}-------------------------------------------------
+Starting audit...
+[ERROR] /tmp/grade/wasniowski_tyler/ArraySetTest.java:10: Missing a Javadoc comment. [JavadocType]
+[ERROR] /tmp/grade/wasniowski_tyler/ArraySetTest.java:12:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/ArraySetTest.java:31:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/ArraySetTest.java:53:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/ArraySetTest.java:67:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/ArraySetTest.java:75:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/ArraySetTest.java:86:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/ArraySetTest.java:97:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/ArraySetTest.java:108:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/BitSetTest.java:10: Missing a Javadoc comment. [JavadocType]
+[ERROR] /tmp/grade/wasniowski_tyler/BitSetTest.java:12:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/BitSetTest.java:32:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/BitSetTest.java:54:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/BitSetTest.java:62:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/BitSetTest.java:73:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/BitSetTest.java:84:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/BitSetTest.java:95:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:6: Missing a Javadoc comment. [JavadocType]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:8:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:20:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:38:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:54:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:70:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:83:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:101:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:114:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSeqTest.java:136:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSet.java:3: Missing a Javadoc comment. [JavadocType]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSet.java:5:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSet.java:6:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSet.java:7:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSet.java:8:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSet.java:9:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSet.java:10:4: Missing a Javadoc comment. [JavadocMethod]
+[ERROR] /tmp/grade/wasniowski_tyler/IntSet.java:11:4: Missing a Javadoc comment. [JavadocMethod]
+Audit done.
+Checkstyle ends with 35 errors.
+-------------------------------------------------
+.
+./IteratorTest.java
+./IntSequence.java
+./SequenceTest.java
+./IntSet.java
+./BitSet.java
+./ArraySet.java
+-------------------------------------------------
+commit 6449462f8dd9cc7d387036315ec609d480d465b6
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Mar 5 14:51:32 2017 -0800
+
+    Added javadocs
+
+:100644 100644 c8bb3dc... b62392e... M	hw5/ArraySet.java
+:100644 100644 a723308... c9295c5... M	hw5/BitSet.java
+:100644 100644 5662f38... 8e21fc6... M	hw5/IntSequence.java
+:100644 100644 cc4cc5d... c45b668... M	hw5/IntSet.java
+:100644 100644 22c07f2... a60825c... M	hw5/IteratorTest.java
+:100644 100644 2e7be07... 52226d4... M	hw5/SequenceTest.java
+
+commit 0489542cf52e6a719565feebf95c320dde0b7bd0
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Mar 5 14:34:46 2017 -0800
+
+    Finished part 2
+
+:100644 100644 4b870c0... c8bb3dc... M	hw5/ArraySet.java
+:100644 000000 6344ea3... 0000000... D	hw5/ArraySetTest.java
+:100644 100644 00bfd4f... a723308... M	hw5/BitSet.java
+:100644 000000 f4ba2c5... 0000000... D	hw5/BitSetTest.java
+:000000 100644 0000000... 5662f38... A	hw5/IntSequence.java
+:100644 100644 4c4f95a... 22c07f2... M	hw5/IteratorTest.java
+:000000 100644 0000000... 2e7be07... A	hw5/SequenceTest.java
+
+commit d0a94054ec8432416f8bc53ae99608cffa072e25
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Mar 5 13:33:05 2017 -0800
+
+    hw5 progress
+
+:100644 100644 a761167... f58ace9... M	hw4/SetTest.java
+:100644 100644 8a8cec1... 4b870c0... M	hw5/ArraySet.java
+:100644 100644 6a2324d... 00bfd4f... M	hw5/BitSet.java
+:100644 100644 2b3b2ad... 4c4f95a... M	hw5/IteratorTest.java
+:100644 100644 374981b... b84cd17... M	lab7/HashSet.java
+
+commit c0e4c42cbe59c4bc869f7ea12afb04052830d4d2
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Thu Mar 2 00:43:37 2017 -0800
+
+    Fixed bug in part 1
+
+:100644 100644 42539ad... 6a2324d... M	hw5/BitSet.java
+:100644 100644 6d1bf5c... 2b3b2ad... M	hw5/IteratorTest.java
+
+commit 98defe72c9a57bc75a23c6b14a297848f1e6d87b
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Thu Mar 2 00:04:27 2017 -0800
+
+    Finished part 1
+
+:100644 100644 c113919... 8a8cec1... M	hw5/ArraySet.java
+:100644 100644 591d030... 42539ad... M	hw5/BitSet.java
+:000000 100644 0000000... 6d1bf5c... A	hw5/IteratorTest.java
+
+commit 9ebc9ac6df8882b0077eb883a3795220da3b8198
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Wed Mar 1 23:00:08 2017 -0800
+
+    hw5 Progress
+
+:100644 100644 5027b61... c113919... M	hw5/ArraySet.java
+
+commit b2a3d334265f70ab20b8b7a56d1e5c2375210029
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Wed Mar 1 19:29:49 2017 -0800
+
+    Fixed hw4 bugs, started hw5
+
+:100644 100644 aa2dff8... 9cfe329... M	hw4/ArraySet.java
+:100644 100644 3a9267c... 6a09214... M	hw4/BitSet.java
+:000000 100644 0000000... 5027b61... A	hw5/ArraySet.java
+:000000 100644 0000000... 6344ea3... A	hw5/ArraySetTest.java
+:000000 100644 0000000... 591d030... A	hw5/BitSet.java
+:000000 100644 0000000... f4ba2c5... A	hw5/BitSetTest.java
+:000000 100644 0000000... cc4cc5d... A	hw5/IntSet.java
+
+commit c59a1de1bb6fa9e445e8ea2769efae91be38e0f9
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Wed Mar 1 14:47:55 2017 -0800
+
+    End of class, lecture 10
+
+:100644 100644 a0e932b... 2d0f20c... M	lab10/AnimationTester.java
+:000000 100644 0000000... ecc70e0... A	lab10/BouncingBall.java
+
+commit 8138e4eb526c907538e12fca445e9b4e327f8097
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Wed Mar 1 14:19:27 2017 -0800
+
+    Started lab10
+
+:000000 100644 0000000... a0e932b... A	lab10/AnimationTester.java
+:000000 100644 0000000... e082fc7... A	lab10/CarShape.java
+:000000 100644 0000000... f0da555... A	lab10/MoveableShape.java
+:000000 100644 0000000... 2b8ae7d... A	lab10/ShapeIcon.java
+
+commit 334760bd14706c05d166069c7a990545d670893c
+Author: xiaofanlinus <graderxiaofanlin@gmail.com>
+Date:   Tue Feb 28 00:10:17 2017 -0800
+
+    hw4 graded
+
+:000000 100644 0000000... 8c63efb... A	hw4scores.txt
+
+commit a1c03bacc211db94c8938524eba6043dcea3e56f
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Mon Feb 27 14:47:50 2017 -0800
+
+    Finished lab9
+
+:100644 100644 8bad32a... d640e8f... M	lab9/ActionTester.java
+
+commit 3661083248968b281e66b3423deb3c2e855b6559
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Mon Feb 27 14:42:56 2017 -0800
+
+    Finished lab9
+
+:100644 100644 8afe01d... 8bad32a... M	lab9/ActionTester.java
+
+commit c8ab2bf32e61183eaaca3f319c5c87747d884a5f
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Mon Feb 27 14:41:22 2017 -0800
+
+    Finished lab9
+
+:100644 100644 8afe01d... 8bad32a... M	lab9/ActionTester.java
+
+commit e124458381bc8d5ae495ca448eda53cf86a11cb6
+Author: Tyler Wasniowski <Tyler Wasniowski>
+Date:   Mon Feb 27 14:29:26 2017 -0800
+
+    Started lab9
+
+:000000 100644 0000000... 8afe01d... A	lab9/ActionTester.java
