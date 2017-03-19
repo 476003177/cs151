@@ -16,4 +16,11 @@ public interface MoveableShape
       its last movement, its position, and velocity.
    */
    void move();
+
+   /**
+    * Yields the bounding rectangle of this shape.
+    * @return the bounding rectangle
+    */
+   Rectangle getBounds();
+
 }

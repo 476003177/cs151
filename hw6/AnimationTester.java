@@ -1,6 +1,8 @@
 import java.awt.*;
+
+import java.util.Set;
 import java.util.HashSet;
-import java.util.Random;
+
 import javax.swing.*;
 
 /**
@@ -13,19 +15,28 @@ public class AnimationTester
    {
       JFrame frame = new JFrame();
 
-      HashSet<Car> cars = new HashSet<>();
-      HashSet<Ball> balls = new HashSet<>();
+      Set<Drawing> drawings = new HashSet<>();
 
-      for (int n = 0; n < 0; n++)
-         cars.add(new Car());
-      for (int n = 0; n < 1; n++)
-         balls.add(new Ball());
+//      // Add cars
+//      for (int n = 0; n < 5; n++)
+//         drawings.add(new Drawing(new BoxedShape(new BoxedShape(new CarShape(0, 0, 40), 0), 30)));
+//
+//      // Add balls
+//      for (int n = 0; n < 5; n++)
+//         drawings.add(new Drawing(new BouncingBall(100, 40)));
+//
+//      // Add dogs
+//      for (int n = 0; n < 5; n++)
+//         drawings.add(new Drawing(new BoxedShape(new MoveableIcon("hw6/dog.png", 0, 0), 20)));
+
+      // Compound Shape
+      drawings.add(new Drawing(new CompoundShape(new BoxedShape(new CarShape(0, 0, 40), 20),
+              new BoxedShape(new BouncingBall(100, 40), 0),
+              new BoxedShape(new MoveableIcon("hw6/dog.png", 0, 0), 0))));
 
       frame.setLayout(new FlowLayout());
-      for (Car c: cars)
-         frame.add(c.getLabel());
-      for (Ball b: balls)
-         frame.add(b.getLabel());
+      for (Drawing s: drawings)
+         frame.add(s.getLabel());
 
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.pack();
@@ -36,24 +47,28 @@ public class AnimationTester
       // Milliseconds between timer ticks
       Timer t = new Timer(DELAY, event ->
          {
-            for (Car c: cars)
-               c.update();
-            for (Ball b: balls)
-               b.update();
+            for (Drawing s: drawings)
+               s.update();
          });
       t.start();
    }
 
-   private static class Car {
+   private static class Drawing {
       MoveableShape shape;
       ShapeIcon icon;
       JLabel label;
 
-      public Car() {
-         shape = new CarShape(0, 0, CAR_WIDTH);
-         icon = new ShapeIcon(shape, ICON_WIDTH, ICON_HEIGHT);
+      public Drawing(MoveableShape shape) {
+         this.shape = shape;
+         icon = new ShapeIcon(shape, (int) shape.getBounds().getWidth() + 1, (int) shape.getBounds().getHeight() + 1);
          label = new JLabel(icon);
       }
+
+       public Drawing(MoveableShape shape, int extraSpaceRight, int extraSpaceDown) {
+           this.shape = shape;
+           icon = new ShapeIcon(shape, (int) shape.getBounds().getWidth() + extraSpaceRight + 1, (int) shape.getBounds().getHeight() + extraSpaceDown + 1);
+           label = new JLabel(icon);
+       }
 
       public void update() {
             shape.move();
@@ -64,35 +79,6 @@ public class AnimationTester
          return label;
       }
 
-      private static final int ICON_WIDTH = 400;
-      private static final int ICON_HEIGHT = 100;
-      private static final int CAR_WIDTH = 100;
-
-   }
-
-   private static class Ball {
-      MoveableShape shape;
-      ShapeIcon icon;
-      JLabel label;
-
-      public Ball() {
-         shape = new BouncingBall(BALL_WIDTH);
-         icon = new ShapeIcon(shape, ICON_WIDTH, ICON_HEIGHT);
-         label = new JLabel(icon);
-      }
-
-      public void update() {
-         shape.move();
-         label.repaint();
-      }
-
-      public JLabel getLabel() {
-         return label;
-      }
-
-      private static final int ICON_WIDTH = 100;
-      private static final int ICON_HEIGHT = 400;
-      private static final int BALL_WIDTH = 20;
    }
 
 }
