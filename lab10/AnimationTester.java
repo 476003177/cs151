@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.util.HashSet;
-import java.util.Random;
 import javax.swing.*;
 
 /**
@@ -76,7 +75,7 @@ public class AnimationTester
       JLabel label;
 
       public Ball() {
-         shape = new BouncingBall(BALL_WIDTH);
+         shape = new BouncingBall_Ignore(BALL_WIDTH);
          icon = new ShapeIcon(shape, ICON_WIDTH, ICON_HEIGHT);
          label = new JLabel(icon);
       }
