@@ -35,16 +35,16 @@ public class CompoundShape implements MoveableShape {
 
         int x = Integer.MAX_VALUE;
         int y = Integer.MAX_VALUE;
-        int width = 0;
-        int height = 0;
+        int maxX = 0;
+        int maxY = 0;
         for (MoveableShape s: shapes) {
             x = (int) Math.min(x, s.getBounds().getX());
             y = (int) Math.min(y, s.getBounds().getY());
-            width = (int) Math.max(width, s.getBounds().getX() + s.getBounds().getWidth());
-            height = (int) Math.max(height, s.getBounds().getY() + s.getBounds().getHeight());
+            maxX = (int) Math.max(maxX, (s.getBounds().getX() + s.getBounds().getWidth()));
+            maxY = (int) Math.max(maxY, s.getBounds().getY() + s.getBounds().getHeight());
         }
 
-        return new Rectangle(x, y, width, height);
+        return new Rectangle(x, y, Math.abs(maxX - x), Math.abs(maxY - y));
     }
 
 }
