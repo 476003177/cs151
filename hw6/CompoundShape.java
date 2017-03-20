@@ -5,11 +5,16 @@ import java.util.List;
 
 /**
  * Created by Tyler on 3/19/2017.
+ * A shape that contains other shapes
  */
 public class CompoundShape implements MoveableShape {
 
     private Collection<MoveableShape> shapes;
 
+    /**
+     * Initializes the collection of shapes
+     * @param shapes the collection of shapes
+     */
     public CompoundShape(MoveableShape... shapes) {
         this.shapes = new ArrayList<>();
 

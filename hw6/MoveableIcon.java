@@ -5,11 +5,18 @@ import java.awt.*;
 
 /**
  * Created by Tyler on 3/19/2017.
+ * An icon that can be moved
  */
 public class MoveableIcon extends ImageIcon implements MoveableShape {
 
     private Rectangle bounds;
 
+    /**
+     * Initializes instance variables
+     * @param filename the location of the image
+     * @param x the x pos to draw the image
+     * @param y the y pos to draw the image
+     */
     public MoveableIcon(String filename, int x, int y)
     {
         super(filename);

@@ -2,6 +2,7 @@ import java.awt.*;
 
 /**
  * Created by Tyler on 3/19/2017.
+ * Draws box around a shape
  */
 public class BoxedShape implements MoveableShape {
 
@@ -9,6 +10,11 @@ public class BoxedShape implements MoveableShape {
 
     private int gap;
 
+    /**
+     * Initializes instance variables
+     * @param shape the shape to draw a box around
+     * @param gap the gap to add around the shape
+     */
     public BoxedShape(MoveableShape shape, int gap) {
         this.shape = shape;
 

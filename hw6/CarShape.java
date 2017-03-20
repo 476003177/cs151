@@ -22,10 +22,14 @@ public class CarShape implements MoveableShape {
         this.bounds = new Rectangle(x, y, width, width/2);
     }
 
+    /**
+     * Moves the car forward
+     */
     public void move() {
         bounds.setRect(bounds.getX() + 1, bounds.getY(), bounds.getWidth(), bounds.getHeight());
     }
 
+    @Override
     public void draw(Graphics2D g2) {
         Rectangle2D.Double body
                 = new Rectangle2D.Double(bounds.getX(), bounds.getY() + getBounds().getWidth() / 6,
