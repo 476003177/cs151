@@ -9,10 +9,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class CarShape implements MoveableShape {
 
-    private int x;
-    private int y;
-
-    private int width;
+    private Rectangle bounds;
 
     /**
      * Constructs a car item.
@@ -22,39 +19,36 @@ public class CarShape implements MoveableShape {
      * @param width the width of the bounding rectangle
      */
     public CarShape(int x, int y, int width) {
-        this.x = x;
-        this.y = y;
-
-        this.width = width;
+        this.bounds = new Rectangle(x, y, width, width/2);
     }
 
     public void move() {
-//        x++;
+        bounds.setRect(bounds.getX() + 1, bounds.getY(), bounds.getWidth(), bounds.getHeight());
     }
 
     public void draw(Graphics2D g2) {
         Rectangle2D.Double body
-                = new Rectangle2D.Double(x, y + getBounds().getWidth() / 6,
+                = new Rectangle2D.Double(bounds.getX(), bounds.getY() + getBounds().getWidth() / 6,
                 getBounds().getWidth() - 1, getBounds().getWidth() / 6);
         Ellipse2D.Double frontTire
-                = new Ellipse2D.Double(x + getBounds().getWidth() / 6, y + getBounds().getWidth() / 3,
+                = new Ellipse2D.Double(bounds.getX() + getBounds().getWidth() / 6, bounds.getY() + getBounds().getWidth() / 3,
                 getBounds().getWidth() / 6, getBounds().getWidth() / 6);
         Ellipse2D.Double rearTire
-                = new Ellipse2D.Double(x + getBounds().getWidth() * 2 / 3, y + getBounds().getWidth() / 3,
+                = new Ellipse2D.Double(bounds.getX() + getBounds().getWidth() * 2 / 3, bounds.getY() + getBounds().getWidth() / 3,
                 getBounds().getWidth() / 6, getBounds().getWidth() / 6);
 
         // The bottom of the front windshield
         Point2D.Double r1
-                = new Point2D.Double(x + getBounds().getWidth() / 6, y + getBounds().getWidth() / 6);
+                = new Point2D.Double(bounds.getX() + getBounds().getWidth() / 6, bounds.getY() + getBounds().getWidth() / 6);
         // The front of the roof
         Point2D.Double r2
-                = new Point2D.Double(x + getBounds().getWidth() / 3, y);
+                = new Point2D.Double(bounds.getX() + getBounds().getWidth() / 3, bounds.getY());
         // The rear of the roof
         Point2D.Double r3
-                = new Point2D.Double(x + getBounds().getWidth() * 2 / 3, y);
+                = new Point2D.Double(bounds.getX() + getBounds().getWidth() * 2 / 3, bounds.getY());
         // The bottom of the rear windshield
         Point2D.Double r4
-                = new Point2D.Double(x + getBounds().getWidth() * 5 / 6, y + getBounds().getWidth() / 6);
+                = new Point2D.Double(bounds.getX() + getBounds().getWidth() * 5 / 6, bounds.getY() + getBounds().getWidth() / 6);
         Line2D.Double frontWindshield
                 = new Line2D.Double(r1, r2);
         Line2D.Double roofTop
@@ -72,7 +66,7 @@ public class CarShape implements MoveableShape {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x, y, width, width/2);
+        return bounds;
     }
 
 }

@@ -6,18 +6,13 @@ import java.awt.*;
 /**
  * Created by Tyler on 3/19/2017.
  */
-public class MoveableIcon extends ImageIcon implements MoveableShape
-{
-    private int x;
-    private int y;
+public class MoveableIcon extends ImageIcon implements MoveableShape {
 
     private Rectangle bounds;
 
     public MoveableIcon(String filename, int x, int y)
     {
         super(filename);
-        this.x = x;
-        this.y = y;
 
         this.bounds = new Rectangle(x, y, this.getIconWidth(), this.getIconHeight());
     }
@@ -25,15 +20,15 @@ public class MoveableIcon extends ImageIcon implements MoveableShape
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.drawImage(this.getImage(), x, y, this.getImageObserver());
+        g2.drawImage(this.getImage(), (int) bounds.getX(), (int) bounds.getY(), this.getImageObserver());
     }
 
     @Override
     public void move() {
         if (Math.random() < 0.5)
-            x++;
+            bounds.setRect(bounds.getX() + 1, bounds.getY(), bounds.getWidth(), bounds.getHeight());
         else
-            x--;
+            bounds.setRect(bounds.getX() - 1, bounds.getY(), bounds.getWidth(), bounds.getHeight());
     }
 
     @Override
