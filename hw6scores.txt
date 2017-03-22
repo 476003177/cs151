@@ -1,0 +1,114 @@
+Student: wasniowski_tyler
+ShapeTest passes (max 20, -3 per failure, min 0): 20
+AnimationTester7 runs and shows boxed car and dogs (max 3):  
+No CheckStyle issues (max 3): 3
+Clean submission directory (no .class, .metadata etc.) (max 3): 3
+At least 3 git checkins (max 3): 3
+-------------------------------------------------
+ShapeTest.java
+JUnit version 4.11
+..........
+Time: 0.247
+
+OK (10 tests)
+
+-------------------------------------------------
+-------------------------------------------------
+Starting audit...
+Audit done.
+-------------------------------------------------
+.
+./ShapeIcon.java
+./dog.png
+./BoxedShape.java
+./CarShape.java
+./MoveStrategy.java
+./SimpleMoveStrategy.java
+./MoveableIcon.java
+./MoveableShape.java
+./BoundedMoveStrategy.java
+./Animation.java
+./CompoundShape.java
+-------------------------------------------------
+commit 2582fcf924c5be1a7092d82fe65a13da4bb69092
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Mar 19 19:22:30 2017 -0700
+
+    Added JavaDoc
+
+:100644 100644 031be1d... b080f80... M	hw6/Animation.java
+:100644 100644 8da9987... 50c29b0... M	hw6/BoundedMoveStrategy.java
+:100644 100644 da76f6f... bd601b9... M	hw6/BoxedShape.java
+:100644 100644 40628ec... baa8e96... M	hw6/CarShape.java
+:100644 100644 0c6ac1f... 24f7a16... M	hw6/CompoundShape.java
+:100644 100644 57d831a... 8702051... M	hw6/MoveStrategy.java
+:100644 100644 779da7f... 9d67aa3... M	hw6/MoveableIcon.java
+:100644 100644 2b8ae7d... 7a3bd70... M	hw6/ShapeIcon.java
+
+commit 12d7a8e3b1a09405befe689b4a4e48aff5b2501a
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Mar 19 19:02:06 2017 -0700
+
+    Bouncing ball to be ingored
+
+:100644 000000 ea9facd... 0000000... D	hw6/BouncingBall.java
+:100644 100644 2d0f20c... cfa05bc... M	lab10/AnimationTester.java
+
+commit f17af8d26ec55a04540b033b1adfb9c582e74b62
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Mar 19 19:00:46 2017 -0700
+
+    Fixed bug where compoundshape's bounds wouldn't be correct unless x and y were 0
+
+:100644 100644 764d86a... 0c6ac1f... M	hw6/CompoundShape.java
+
+commit b5ca77967c1f751106e1b3d841f1c5d94e830296
+Author: Tyler Wasniowski <TylerWasniowski@users.noreply.github.com>
+Date:   Sun Mar 19 18:14:52 2017 -0700
+
+    Remove AnimationTester from git
+
+:100644 000000 2576a9c... 0000000... D	hw6/AnimationTester.java
+
+commit 367d0d8d5558c8b900b0c574de90db387eaa1cd9
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Mar 19 18:11:49 2017 -0700
+
+    Looks done
+
+:000000 100644 0000000... 031be1d... A	hw6/Animation.java
+:100644 100644 4dd4b36... 2576a9c... M	hw6/AnimationTester.java
+:000000 100644 0000000... 8da9987... A	hw6/BoundedMoveStrategy.java
+:100644 100644 6e9ed4a... 40628ec... M	hw6/CarShape.java
+:100644 100644 25281a3... 764d86a... M	hw6/CompoundShape.java
+:000000 100644 0000000... 57d831a... A	hw6/MoveStrategy.java
+:100644 100644 3c8e63a... 779da7f... M	hw6/MoveableIcon.java
+:000000 100644 0000000... 3f096a5... A	hw6/SimpleMoveStrategy.java
+
+commit 42278f9e3aacba84c094e1bc612c843df50b6514
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sun Mar 19 13:45:07 2017 -0700
+
+    Added BoxedShape and CompoundShape and MoveableIcon
+
+:100644 100644 2d0f20c... 4dd4b36... M	hw6/AnimationTester.java
+:100644 100644 ecc70e0... ea9facd... M	hw6/BouncingBall.java
+:000000 100644 0000000... da76f6f... A	hw6/BoxedShape.java
+:100644 100644 e082fc7... 6e9ed4a... M	hw6/CarShape.java
+:000000 100644 0000000... 25281a3... A	hw6/CompoundShape.java
+:000000 100644 0000000... 3c8e63a... A	hw6/MoveableIcon.java
+:100644 100644 f0da555... 82e47f9... M	hw6/MoveableShape.java
+:000000 100644 0000000... d1b073e... A	hw6/dog.png
+
+commit 9f04f7ede92e6868b26ecbea41515ba1facad01a
+Author: Tyler Wasniowski <TylerWasniowski@gmail.com>
+Date:   Sat Mar 18 22:58:53 2017 -0700
+
+    Started hw6
+
+:100644 100644 a635140... 283f3e8... M	hw3/User.java
+:000000 100644 0000000... 2d0f20c... A	hw6/AnimationTester.java
+:000000 100644 0000000... ecc70e0... A	hw6/BouncingBall.java
+:000000 100644 0000000... e082fc7... A	hw6/CarShape.java
+:000000 100644 0000000... f0da555... A	hw6/MoveableShape.java
+:000000 100644 0000000... 2b8ae7d... A	hw6/ShapeIcon.java
