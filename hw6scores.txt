@@ -1,6 +1,6 @@
 Student: wasniowski_tyler
 ShapeTest passes (max 20, -3 per failure, min 0): 20
-AnimationTester7 runs and shows boxed car and dogs (max 3):  
+AnimationTester7 runs and shows boxed car and dogs (max 3):  1
 No CheckStyle issues (max 3): 3
 Clean submission directory (no .class, .metadata etc.) (max 3): 3
 At least 3 git checkins (max 3): 3
