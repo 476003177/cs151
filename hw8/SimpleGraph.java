@@ -9,10 +9,11 @@ public class SimpleGraph extends Graph
    public Node[] getNodePrototypes()
    {
       Node[] nodeTypes =
-         {
-            new CircleNode(Color.BLACK),
-            new CircleNode(Color.WHITE)
-         };
+              {
+                      new CircleNode(Color.BLACK),
+                      new CircleNode(Color.WHITE),
+                      new DiamondNode()
+              };
       return nodeTypes;
    }
 

@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class DiamondNode implements Node {
 
-    private static final int DEFAULT_SIZE = 20;
+    private static final int DEFAULT_SIZE = 100;
 
     private double x;
     private double y;
@@ -50,17 +50,19 @@ public class DiamondNode implements Node {
 
     @Override
     public boolean contains(Point2D aPoint) {
-        boolean aboveTopLeftEdge = aPoint.getY() > aPoint.getX() + size/2;
-        boolean aboveTopRightEdge = aPoint.getY() > -aPoint.getX() + size + size/2;
-        boolean belowBottomRightEdge = aPoint.getY() < aPoint.getX() - 10;
-        boolean belowBottomLeftEdge = aPoint.getY() < -aPoint.getX() + size/2;
+        // Subtracting x and y and flipping the point (because +y is down in Java and we want +y to be up)
+        Point2D adjustedPoint = new Point2D.Double(aPoint.getX() - x, -(aPoint.getY() - y) + size);
+
+        boolean aboveTopLeftEdge = adjustedPoint.getY() > adjustedPoint.getX() + size/2;
+        boolean aboveTopRightEdge = adjustedPoint.getY() > -adjustedPoint.getX() + size + size/2;
+        boolean belowBottomRightEdge = adjustedPoint.getY() < adjustedPoint.getX() - size/2;
+        boolean belowBottomLeftEdge = adjustedPoint.getY() < -adjustedPoint.getX() + size/2;
 
         return !aboveTopLeftEdge && !aboveTopRightEdge && !belowBottomRightEdge && ! belowBottomLeftEdge;
     }
 
     @Override
     public Point2D getConnectionPoint(Point2D aPoint) {
-
         return null;
     }
 
