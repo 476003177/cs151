@@ -24,22 +24,22 @@ public class DiamondNode implements Node {
     @Override
     public void draw(Graphics2D g2) {
         // Make points for edges
-        Point2D.Double leftEdge = new Point2D.Double(x - size, y);
-        Point2D.Double topEdge = new Point2D.Double(x, y - size);
-        Point2D.Double rightEdge = new Point2D.Double(x + size, y);
-        Point2D.Double bottomEdge = new Point2D.Double(x, y + size);
+        Point2D.Double leftCorner = new Point2D.Double(x, y + size/2);
+        Point2D.Double topCorner = new Point2D.Double(x + size/2, y);
+        Point2D.Double rightCorner = new Point2D.Double(x + size, y + size/2);
+        Point2D.Double bottomCorner = new Point2D.Double(x + size/2, y + size);
 
         // Make lines from points
-        Line2D.Double topLeftLine = new Line2D.Double(leftEdge, topEdge);
-        Line2D.Double topRightLine = new Line2D.Double(topEdge, rightEdge);
-        Line2D.Double bottomRightLine = new Line2D.Double(rightEdge, bottomEdge);
-        Line2D.Double bottomLeftLine = new Line2D.Double(bottomEdge, leftEdge);
+        Line2D.Double topLeftEdge = new Line2D.Double(leftCorner, topCorner);
+        Line2D.Double topRightEdge = new Line2D.Double(topCorner, rightCorner);
+        Line2D.Double bottomRightEdge = new Line2D.Double(rightCorner, bottomCorner);
+        Line2D.Double bottomLeftEdge = new Line2D.Double(bottomCorner, leftCorner);
 
         // Draw lines
-        g2.draw(topLeftLine);
-        g2.draw(topRightLine);
-        g2.draw(bottomRightLine);
-        g2.draw(bottomLeftLine);
+        g2.draw(topLeftEdge);
+        g2.draw(topRightEdge);
+        g2.draw(bottomRightEdge);
+        g2.draw(bottomLeftEdge);
     }
 
     @Override
@@ -50,22 +50,36 @@ public class DiamondNode implements Node {
 
     @Override
     public boolean contains(Point2D aPoint) {
-        return false;
+        boolean aboveTopLeftEdge = aPoint.getY() > aPoint.getX() + size/2;
+        boolean aboveTopRightEdge = aPoint.getY() > -aPoint.getX() + size + size/2;
+        boolean belowBottomRightEdge = aPoint.getY() < aPoint.getX() - 10;
+        boolean belowBottomLeftEdge = aPoint.getY() < -aPoint.getX() + size/2;
+
+        return !aboveTopLeftEdge && !aboveTopRightEdge && !belowBottomRightEdge && ! belowBottomLeftEdge;
     }
 
     @Override
     public Point2D getConnectionPoint(Point2D aPoint) {
+
         return null;
     }
 
     @Override
     public Rectangle2D getBounds() {
-        return null;
+        return new Rectangle2D.Double(x, y, size, size);
     }
 
+    // Copied from Professor Horstmann's CircleNode
     @Override
     public Object clone() {
-        return null;
+        try
+        {
+            return super.clone();
+        }
+        catch (CloneNotSupportedException exception)
+        {
+            return null;
+        }
     }
 
 }
