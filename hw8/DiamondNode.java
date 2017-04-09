@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class DiamondNode implements Node {
 
-    private static final int DEFAULT_SIZE = 100;
+    private static final int DEFAULT_SIZE = 20;
 
     private double x;
     private double y;
@@ -23,13 +23,13 @@ public class DiamondNode implements Node {
 
     @Override
     public void draw(Graphics2D g2) {
-        // Make points for edges
+        // Make corners for edges
         Point2D.Double leftCorner = new Point2D.Double(x, y + size/2);
         Point2D.Double topCorner = new Point2D.Double(x + size/2, y);
         Point2D.Double rightCorner = new Point2D.Double(x + size, y + size/2);
         Point2D.Double bottomCorner = new Point2D.Double(x + size/2, y + size);
 
-        // Make lines from points
+        // Make edges from corners
         Line2D.Double topLeftEdge = new Line2D.Double(leftCorner, topCorner);
         Line2D.Double topRightEdge = new Line2D.Double(topCorner, rightCorner);
         Line2D.Double bottomRightEdge = new Line2D.Double(rightCorner, bottomCorner);
@@ -63,7 +63,22 @@ public class DiamondNode implements Node {
 
     @Override
     public Point2D getConnectionPoint(Point2D aPoint) {
-        return null;
+        // Subtracting x and y and flipping the point (because +y is down in Java and we want +y to be up)
+        Point2D adjustedPoint = new Point2D.Double(aPoint.getX() - x, -(aPoint.getY() - y) + size);
+
+        // First half is a positive slope line going through the center of the diamond
+        // Second half is a negative slope line going through the center of the diamond
+        boolean aboveFirstHalf = adjustedPoint.getY() > adjustedPoint.getX();
+        boolean aboveSecondHalf = adjustedPoint.getY() > -adjustedPoint.getX();
+
+        if (aboveFirstHalf && !aboveSecondHalf)
+            return new Point2D.Double(x, y + size/2); // Left corner
+        if (aboveFirstHalf && aboveSecondHalf)
+            return new Point2D.Double(x + size/2, y); // Top corner
+        if (!aboveFirstHalf && aboveSecondHalf)
+            return new Point2D.Double(x + size, y + size/2); // Right corner
+        else
+            return new Point2D.Double(x + size/2, y + size); // Bottom corner
     }
 
     @Override
