@@ -12,8 +12,14 @@ public class HVEdge extends LineEdge {
         Line2D horizontalLine = new Line2D.Double(getConnectionPoints().getX1(), getConnectionPoints().getY1(), getConnectionPoints().getX2(), getConnectionPoints().getY1());
         Line2D verticalLine = new Line2D.Double(getConnectionPoints().getX2(), getConnectionPoints().getY1(), getConnectionPoints().getX2(), getConnectionPoints().getY2());
 
+        // Save the stroke of the graphics context so we can re-establish later
+        Stroke savedStroke = g2.getStroke();
+
+        g2.setStroke(getLineStyle().getStroke());
         g2.draw(horizontalLine);
         g2.draw(verticalLine);
+
+        g2.setStroke(savedStroke);
     }
 
     @Override
