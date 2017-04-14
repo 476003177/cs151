@@ -4,7 +4,8 @@ import java.awt.*;
    A layout manager that lays out components along a central axis
 */
 class FormLayout implements LayoutManager
-{  
+{
+   @Override
    public Dimension preferredLayoutSize(Container parent)
    {  
       Component[] components = parent.getComponents();
@@ -25,12 +26,14 @@ class FormLayout implements LayoutManager
       }      
       return new Dimension(left + GAP + right, height);
    }
-      
+
+   @Override
    public Dimension minimumLayoutSize(Container parent)
    {  
       return preferredLayoutSize(parent);
    }
 
+   @Override
    public void layoutContainer(Container parent)
    {  
       preferredLayoutSize(parent); // sets left, right
@@ -61,10 +64,12 @@ class FormLayout implements LayoutManager
       }
    }
 
+   @Override
    public void addLayoutComponent(String name,
       Component comp)
    {}
 
+   @Override
    public void removeLayoutComponent(Component comp)
    {}
 

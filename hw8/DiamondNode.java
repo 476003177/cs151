@@ -14,6 +14,10 @@ public class DiamondNode implements Node {
     private double y;
     private double size;
 
+    /**
+     * Initializes x, y, and size of the diamond node.
+     * Size is defined as the distance from the center of the diamond to any of its corners.
+     */
     public DiamondNode() {
         x = 0;
         y = 0;

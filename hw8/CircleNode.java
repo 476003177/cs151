@@ -18,16 +18,25 @@ public class CircleNode implements Node
       color = aColor;
    }
 
+   /**
+    * Changes the color of the circle.
+    * @param aColor the new color of the circle.
+    */
    public void setColor(Color aColor)
    {
       color = aColor;
    }
 
+   /**
+    * Gets the color of the circle.
+    * @return the color of the circle.
+    */
    public Color getColor()
    {
       return color;
    }
 
+   @Override
    public Object clone()
    {
       try
@@ -40,6 +49,7 @@ public class CircleNode implements Node
       }
    }
 
+   @Override
    public void draw(Graphics2D g2)
    {
       Ellipse2D circle = new Ellipse2D.Double(
@@ -51,12 +61,14 @@ public class CircleNode implements Node
       g2.draw(circle);
    }
 
+   @Override
    public void translate(double dx, double dy)
    {
       x += dx;
       y += dy;
    }
 
+   @Override
    public boolean contains(Point2D p)
    {
       Ellipse2D circle = new Ellipse2D.Double(
@@ -64,12 +76,14 @@ public class CircleNode implements Node
       return circle.contains(p);
    }
 
+   @Override
    public Rectangle2D getBounds()
    {
       return new Rectangle2D.Double(
             x, y, size, size);
    }
 
+   @Override
    public Point2D getConnectionPoint(Point2D other)
    {
       double centerX = x + size / 2;

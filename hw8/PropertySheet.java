@@ -16,7 +16,7 @@ public class PropertySheet extends JPanel
    /**
       Constructs a property sheet that shows the editable
       properties of a given object.
-      @param object the object whose properties are being edited
+      @param bean the object whose properties are being edited
    */
    public PropertySheet(Object bean)
    {

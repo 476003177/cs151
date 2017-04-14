@@ -6,8 +6,9 @@ import java.util.*;
 */
 public class SimpleGraph extends Graph
 {
-   public Node[] getNodePrototypes()
-   {
+    @Override
+    public Node[] getNodePrototypes()
+    {
       Node[] nodeTypes =
               {
                       new CircleNode(Color.BLACK),
@@ -15,18 +16,19 @@ public class SimpleGraph extends Graph
                       new DiamondNode()
               };
       return nodeTypes;
-   }
+    }
 
-   public Edge[] getEdgePrototypes()
-   {
-      Edge[] edgeTypes = 
+    @Override
+    public Edge[] getEdgePrototypes()
+    {
+      Edge[] edgeTypes =
          {
              new LineEdge(),
              new HVEdge(),
              new VHEdge()
          };
       return edgeTypes;
-   }
+    }
 }
 
 

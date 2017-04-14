@@ -7,6 +7,7 @@ import java.awt.geom.*;
 */
 public abstract class AbstractEdge implements Edge
 {
+   @Override
    public Object clone()
    {
       try
@@ -19,22 +20,26 @@ public abstract class AbstractEdge implements Edge
       }
    }
 
+   @Override
    public void connect(Node s, Node e)
    {
       start = s;
       end = e;
    }
 
+   @Override
    public Node getStart()
    {
       return start;
    }
 
+   @Override
    public Node getEnd()
    {
       return end;
    }
 
+   @Override
    public Rectangle2D getBounds(Graphics2D g2)
    {
       Line2D conn = getConnectionPoints();
@@ -44,6 +49,7 @@ public abstract class AbstractEdge implements Edge
       return r;
    }
 
+   @Override
    public Line2D getConnectionPoints()
    {
       Rectangle2D startBounds = start.getBounds();

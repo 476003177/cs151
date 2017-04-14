@@ -5,6 +5,10 @@ import javax.swing.*;
 */
 public class SimpleGraphEditor
 {
+   /**
+    * Opens a simple graph.
+    * @param args main args
+    */
    public static void main(String[] args)
    {
       JFrame frame = new GraphFrame(new SimpleGraph());

@@ -25,6 +25,7 @@ public abstract class Graph implements Serializable
       @param e the edge to add
       @param p1 a point in the starting node
       @param p2 a point in the ending node
+      @return true if the edge gets added, and false if not.
    */
    public boolean connect(Edge e, Point2D p1, Point2D p2)
    {
@@ -44,6 +45,7 @@ public abstract class Graph implements Serializable
       the bounding rectangle is at the given point.
       @param n the node to add
       @param p the desired location
+      @return true if node was added, false if not.
    */
    public boolean add(Node n, Point2D p)
    {

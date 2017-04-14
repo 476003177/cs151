@@ -6,11 +6,15 @@ import java.awt.geom.*;
 */
 public class LineEdge extends AbstractEdge
 {
+   /**
+    * Constructs a LineEdge with a default style of solid.
+    */
    public LineEdge()
    {
       lineStyle = LineStyle.SOLID;
    }
 
+   @Override
    public void draw(Graphics2D g2)
    {
       Stroke oldStroke = g2.getStroke();
@@ -19,6 +23,7 @@ public class LineEdge extends AbstractEdge
       g2.setStroke(oldStroke);
    }
 
+   @Override
    public boolean contains(Point2D aPoint)
    {
       final double MAX_DIST = 2;

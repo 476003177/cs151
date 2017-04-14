@@ -49,10 +49,15 @@ public interface Edge extends Serializable, Cloneable
    /**
       Gets the smallest rectangle that bounds this edge.
       The bounding rectangle contains all labels.
+      @param g2 the graphics context to get the bounds of
       @return the bounding rectangle
    */
    Rectangle2D getBounds(Graphics2D g2);
 
+   /**
+    * Clones the edge.
+    * @return a clone of the edge.
+    */
    Object clone();
 }
 

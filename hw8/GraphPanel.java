@@ -119,6 +119,7 @@ public class GraphPanel extends JComponent
          });
    }
 
+   @Override
    public void paintComponent(Graphics g)
    {
       Graphics2D g2 = (Graphics2D) g;
@@ -204,6 +205,7 @@ public class GraphPanel extends JComponent
       g2.setColor(oldColor);
    }
 
+   @Override
    public Dimension getPreferredSize()
    {
       Rectangle2D bounds 

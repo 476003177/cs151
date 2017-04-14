@@ -43,5 +43,9 @@ public interface Node extends Serializable, Cloneable
    */
    Rectangle2D getBounds();
 
+   /**
+    * Clones the node.
+    * @return a clone of the node.
+    */
    Object clone();
 }

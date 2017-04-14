@@ -11,6 +11,7 @@ public class ToolBar extends JPanel
 {
    /**
       Constructs a tool bar with no icons.
+      @param graph the graph to make a toolbar for
    */
    public ToolBar(Graph graph)
    {
@@ -98,7 +99,7 @@ public class ToolBar extends JPanel
 
    /**
       Adds an edge to the tool bar.
-      @param n the edge to add
+      @param e the edge to add
    */
    public void add(final Edge e)
    {

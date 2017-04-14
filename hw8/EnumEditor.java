@@ -14,6 +14,7 @@ public class EnumEditor extends PropertyEditorSupport
       this.cl = cl;
    }
 
+   @Override
    public String[] getTags()
    {
       try
@@ -31,11 +32,13 @@ public class EnumEditor extends PropertyEditorSupport
       }
    }
 
+   @Override
    public String getAsText()
    {
       return getValue().toString();
    }
 
+   @Override
    public void setAsText(String s)
    {
       setValue(Enum.valueOf(cl, s));
