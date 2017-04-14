@@ -63,7 +63,7 @@ public class DiamondNode implements Node {
 
     @Override
     public Point2D getConnectionPoint(Point2D aPoint) {
-        // Subtracting x and y and flipping the point (because +y is down in Java and we want +y to be up)
+        // Subtracting x and y, and flipping the point (because +y is down in Java and we want +y to be up)
         Point2D adjustedPoint = new Point2D.Double(aPoint.getX() - x, -(aPoint.getY() - y) + size);
 
         // First half is a positive slope line going through the center of the diamond

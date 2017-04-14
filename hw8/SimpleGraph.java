@@ -21,7 +21,9 @@ public class SimpleGraph extends Graph
    {
       Edge[] edgeTypes = 
          {
-            new LineEdge()
+             new LineEdge(),
+             new HVEdge(),
+             new VHEdge()
          };
       return edgeTypes;
    }
