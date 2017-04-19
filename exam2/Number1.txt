@@ -1,0 +1,7 @@
+AtomicInteger
+AtomicLong
+
+byteValue()
+shortValue()
+
+The byteValue() and shortValue() methods returns the number in different formats without actually modifying the number. They call a method that the subclass needs to provide (called intValue()).

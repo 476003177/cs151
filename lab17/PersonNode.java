@@ -19,6 +19,7 @@ public class PersonNode extends CircleNode {
     public PersonNode() {
         super(Color.WHITE);
         setSize(40);
+        Number
     }
 
     public String getImageURL() {

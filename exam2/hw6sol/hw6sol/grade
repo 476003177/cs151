@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Edit these settings to match your system
+JUNIT_HOME=~/junit4
+CHECKSTYLE_HOME=~/checkstyle
+
+if [[ -z "$1" ]] ; then
+    echo Usage: grade submissiondir
+    echo Example: ./grade ~/cs151/hw3
+    exit
+fi    
+
+SUBMISSIONDIR=$1
+ID=`dirname $1`
+ID=`basename $ID`
+SOLUTIONDIR=`dirname $0`
+
+CLASSPATH=.:$JUNIT_HOME/\*
+
+export LANGUAGE=en_US.UTF_8
+export LANG=en_US.UTF_8
+export LC_ALL=en_US.UTF_8
+
+WORKDIR=/tmp/grade/$ID
+mkdir -p $WORKDIR
+SCORES=$WORKDIR/scores.txt
+
+echo Student: $ID > $SCORES
+cat $SOLUTIONDIR/rubric.txt >> $SCORES
+
+echo "-------------------------------------------------" >> $SCORES
+
+cp $SUBMISSIONDIR/*.java $WORKDIR
+cp $SOLUTIONDIR/{ShapeTest,AnimationTester7}.java $WORKDIR
+cp $SOLUTIONDIR/dog.png $WORKDIR
+cp $SOLUTIONDIR/checkstyle.xml $WORKDIR
+
+cd $WORKDIR
+
+for t in *Test.java ; do
+    echo $t >> $SCORES
+    javac -classpath $CLASSPATH $t >> $SCORES 2>&1
+    timeout 10s java -classpath $CLASSPATH org.junit.runner.JUnitCore ${t/.java/} 2>&1 | grep -vE 'at (org\.junit|(java\.lang|sun)\.reflect)' >> $SCORES
+    echo "-------------------------------------------------" >> $SCORES
+done
+
+javac -classpath $CLASSPATH AnimationTester7.java >> $SCORES 2>&1
+java AnimationTester7 >> $SCORES 2>&1
+echo "-------------------------------------------------" >> $SCORES
+
+
+java -cp $CHECKSTYLE_HOME/\* com.puppycrawl.tools.checkstyle.Main -c checkstyle.xml *.java >> $SCORES 2>&1
+echo "-------------------------------------------------" >> $SCORES
+
+cd - > /dev/null
+cd $SUBMISSIONDIR
+
+find . >> $SCORES
+
+echo "-------------------------------------------------" >> $SCORES
+
+git whatchanged --since="7 days ago" >> $SCORES
+echo $SCORES
