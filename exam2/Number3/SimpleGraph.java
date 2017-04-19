@@ -12,7 +12,8 @@ public class SimpleGraph extends Graph
          {
             new CircleNode(Color.BLACK),
             new CircleNode(Color.WHITE),
-            new DiamondNode()
+            new DiamondNode(),
+            new SquareNode()
          };
       return nodeTypes;
    }

@@ -1,0 +1,26 @@
+Decorator:
+
+Name in Design Pattern | Actual Name
+====================================
+Component              |MoveableShape
+ConcreteComponent      |CarShape
+Decorator              |BoxedShape
+method()               |getBounds()
+
+Composite:
+
+Name in Design Pattern | Actual Name
+====================================
+Primitive              |MoveableShape
+Composite              |CompoundShape
+Leaf                   |CarShape
+method()               |move()
+
+Strategy:
+
+Name in Design Pattern | Actual Name
+====================================
+Context                |Animation
+Strategy               |MoveStrategy
+ConcreteStrategy       |SimpleMoveStrategy
+doWork()               |process(List<MoveableShape> shapes)
