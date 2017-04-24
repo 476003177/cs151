@@ -1,4 +1,6 @@
 Student: wasniowski_tyler
+56	A
+
 Problem 1
 2 subclasses (max. 2 points):2
 2 concrete methods (max. 2 points):2
