@@ -1,0 +1,60 @@
+Student: wasniowski_tyler
+Problem 1
+2 subclasses (max. 2 points):2
+2 concrete methods (max. 2 points):2
+The "algorithm/templateMethod()" is to compute byte/short values (max. 2 points):2
+The "primitive operation/primitiveOp1()" is to compute int values (max. 2 points):2
+The abstract class is Number, the concrete classes are Integer, Double, ... (max. 2 points): 0
+
+Problem 2
+
+Decorator
+
+Component              | MoveableShape (max. 2 points): 2
+ConcreteComponent      | e.g. CarShape (max. 2 points): 2
+Decorator              | BoxedShape    (max. 2 points): 2
+method()               | draw, move, getBounds (max. 2 points): 1
+
+Composite
+
+Primitive              | MoveableShape (max. 2 points): 2
+Composite              | CompoundShape (max. 2 points): 2
+Leaf                   | e.g. CarShape (max. 2 points): 2
+method()               | draw, move, getBounds (max. 2 points): 1
+
+
+Strategy
+
+Context                | Animation     (max. 2 points): 2
+Strategy               | MoveStrategy  (max. 2 points): 2
+ConcreteStrategy       | e.g. BoundedMoveStrategy  (max. 2 points): 2
+doWork()               | process       (max. 2 points): 2
+
+Problem 3
+
+SquareNode.draw draws, fills rectangle (max. 4 points):4
+SquareNode.contains (max. 2 points):2
+connectingLine connects center with other (max. 2 points):2
+right, bottom lines (max. 4 points):4
+Computes closest point (max. 4 points):4
+Adds square prototype (max. 2 points): 2
+
+Problem 4
+
+mousePressed from blank object to mouse listener (max. 2 points):2
+findNode, findEdge from mouse listener to graph  (max. 2 points):1
+getSelectedTool from mouse listener to toolbar   (max. 2 points):0
+getBounds from mouse listener to circle node     (max. 2 points):0
+repaint from mouse listener to graph panel       (max. 2 points):1
+paintComponent from blank object to graph panel  (max. 2 points):2
+getBounds self call on graph panel               (max. 2 points):0
+getBounds from graph panel to graph              (max. 2 points):0
+getBounds from graph panel to circle node        (max. 2 points):0
+drawGrabber self call on graph panel             (max. 2 points):2
+
+No work for below
+
+Decorator pattern doesn't apply                  (max. 2 points):0
+No decorator class
+Template method pattern doesn't apply            (max. 2 points):0
+No primitive operations in subclasses
