@@ -1,8 +1,8 @@
 Student: wasniowski_tyler
-Buttons for diamond, HV, VH edge displayed (3 points):
-Connect 2 circles with HV edge--correctly drawn? (2 points):
-Correctly attached? (2 points):
-Repeat with VH edge (2 points):
-Diamond correctly drawn (2 points): 
-Connect 2 diamonds with line edge--correctly attached (3 points):
-In selection mode, click near HV and VH edge to selected (2 points): 
+Buttons for diamond, HV, VH edge displayed (3 points): 3
+Connect 2 circles with HV edge--correctly drawn? (2 points): 2
+Correctly attached? (2 points): 2
+Repeat with VH edge (2 points): 2
+Diamond correctly drawn (2 points): 2
+Connect 2 diamonds with line edge--correctly attached (3 points): 3
+In selection mode, click near HV and VH edge to selected (2 points): 0
