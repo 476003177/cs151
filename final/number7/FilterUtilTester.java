@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Created by rooke on 5/22/2017.
  */
 public class FilterUtilTester {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         ArrayList<Country> countries = new ArrayList<>();
         countries.add(new Country("Uruguay", 176220));
         countries.add(new Country("Thailand", 514000));
@@ -18,5 +18,8 @@ public class FilterUtilTester {
         countries.forEach((c) -> System.out.println(c.hashCode()));
 
         System.out.println(result);
+
+        System.out.println();
+        System.out.println(FilterUtil.countConcurrent(countries, evenHashCode));
     }
 }
