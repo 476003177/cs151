@@ -1,3 +1,4 @@
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.geom.*;
@@ -35,6 +36,8 @@ public abstract class Graph implements Serializable
       {
          e.connect(n1, n2);
          edges.add(e);
+
+         notifyObservers();
          return true;
       }
       return false;
@@ -51,7 +54,9 @@ public abstract class Graph implements Serializable
       Rectangle2D bounds = n.getBounds();
       n.translate(p.getX() - bounds.getX(),
          p.getY() - bounds.getY());
-      nodes.add(n);
+      if (nodes.add(n))
+        notifyObservers();
+
       return true;
    }
 
@@ -108,10 +113,13 @@ public abstract class Graph implements Serializable
       for (int i = edges.size() - 1; i >= 0; i--)
       {
          Edge e =  edges.get(i);
-         if (e.getStart() == n || e.getEnd() == n)
-            edges.remove(e);
+         if (e.getStart() == n || e.getEnd() == n) {
+             if (edges.remove(e))
+                 notifyObservers();
+         }
       }
-      nodes.remove(n);
+      if (nodes.remove(n))
+        notifyObservers();
    }
 
    /**
@@ -121,6 +129,8 @@ public abstract class Graph implements Serializable
    public void removeEdge(Edge e)
    {
       edges.remove(e);
+
+      notifyObservers();
    }
 
    /**
@@ -172,12 +182,16 @@ public abstract class Graph implements Serializable
    }
 
    public void addChangeListener(ChangeListener observer) {
+        observers.add(observer);
+   }
 
+   private void notifyObservers() {
+       observers.forEach((ChangeListener observer) -> {observer.stateChanged(new ChangeEvent(this));});
    }
 
    private ArrayList<Node> nodes;
    private ArrayList<Edge> edges;
-   private Collection<ChangleListener> observers;
+   private Collection<ChangeListener> observers;
 }
 
 

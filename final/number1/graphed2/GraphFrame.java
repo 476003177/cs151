@@ -19,6 +19,7 @@ public class GraphFrame extends JFrame
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
       this.graph = graph;
+      graph.addChangeListener(e -> System.out.println("Graph changed"));
 
       constructFrameComponents();
       // set up menus
