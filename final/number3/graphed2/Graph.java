@@ -195,11 +195,13 @@ public abstract class Graph implements Serializable, Cloneable
        observers.forEach((ChangeListener observer) -> {observer.stateChanged(new ChangeEvent(this));});
    }
 
-   public Object clone() {
-       Graph clone = new Graph();
+   public Object clone() throws CloneNotSupportedException {
+       Graph clone = (Graph) super.clone();
        clone.nodes = new ArrayList<>(this.nodes);
        clone.edges = new ArrayList<>(this.edges);
-       return super.clone();
+       clone.observers = new HashSet<>();
+
+       return clone;
    }
 
    private ArrayList<Node> nodes;

@@ -153,13 +153,15 @@ public class GraphFrame extends JFrame
             File file = fileChooser.getSelectedFile();
             ObjectOutputStream out = new ObjectOutputStream(
                new FileOutputStream(file));
-            out.writeObject(graph);
+            out.writeObject(graph.clone());
             out.close();
          }
          catch (IOException exception)
          {
             JOptionPane.showMessageDialog(null,
                exception);
+         } catch (CloneNotSupportedException ex) {
+            ex.printStackTrace();
          }
       }
    }
