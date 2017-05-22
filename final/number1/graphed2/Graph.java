@@ -1,3 +1,4 @@
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
@@ -18,6 +19,7 @@ public abstract class Graph implements Serializable
    {
       nodes = new ArrayList<>();
       edges = new ArrayList<>();
+      observers = new HashSet<>();
    }
 
    /**
@@ -181,8 +183,12 @@ public abstract class Graph implements Serializable
       return Collections.unmodifiableList(edges);
    }
 
-   public void addChangeListener(ChangeListener observer) {
-        observers.add(observer);
+   public boolean addChangeListener(ChangeListener observer) {
+        return observers.add(observer);
+   }
+
+   public boolean removeChangeListener(ChangeListener observer) {
+       return observers.remove(observer);
    }
 
    private void notifyObservers() {
