@@ -1,0 +1,208 @@
+Student: wasniowski_tyler
+
+A-	A	A+	A	A+	A+	A
+
+Problem 1
+
+Instance variable holding ChangeListener instances (max. 2 points): 2
+Method for adding ChangeListener instances (max. 2 points):2
+Creating ChangeEvent (max. 2 points):2
+Calling stateChanged (max. 2 points):2
+Doing it in all four graph mutators (max. 2 points):2
+
+Problem 2
+
+Identifies subject (max. 1 point):1
+Identifies observer (max. 1 point):1
+Identifies ConcreteObserver (max. 1 point):1
+Identifies attach (max. 1 point):1
+Identifies notify (max. 1 point):1
+Explains that there is only one listener (max. 3 points):0
+
+Problem 3
+
+Graph implements Cloneable (max. 1 point): 1
+clone method clones graph or node and edge list (max. 3 points):3
+clone method clones nodes and edges (max. 4 points):0
+throws or catches CloneNotSupportedException (max. 2 points):2
+
+Problem 4
+
+count from unknown to FilterUtil class (max. 3 points): 3
+size and get from FilterUtil to ArrayList<Country> (max. 3 points): 1
+accept from FilterUtil class to Filter instance (max. 3 points):3
+getArea call from Filter instance to Country (max. 3 points):3
+
+Problem 5
+
+AllFilter<T> implements Filter<T> (max. 3 points):3
+collection of filters (max. 2 points):2
+add adds filter (max. 2 points):2
+accept calls accept on all filters (max. 3 points):3
+Generics (max. 2 points): 2
+
+Problem 6
+
+Explanation that T can't match Country or Object (max. 3 points):3
+Filter<? super T> (max. 3 points):3
+
+Problem 7
+
+Makes two Callable<Integer> (max. 3 points):3
+Each Callable counts half the array (max. 3 points):3
+Callables submitted to executor service (max. 3 points):3
+Answers combined and returned (max. 3 points): 3
+
+Git
+
+Checkin every 10 minutes (max. 5 points):5
+
+commit c062cc2703fb5b52e5ab6fc8e8c886474208a4f5
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 13:54:00 2017 -0700
+
+    Final commit
+
+:100644 000000 df77722... 0000000... D	final/number4.violet
+:000000 100644 0000000... df77722... A	final/number4/number4.violet
+:000000 100644 0000000... 5174142... A	final/number4/sequence.png
+:100644 100644 bb63041... 5f47ab8... M	final/number7/FilterUtil.java
+:100644 100644 a4df960... 327127e... M	final/number7/FilterUtilTester.java
+:100644 000000 5174142... 0000000... D	final/sequence.png
+
+commit b386f8c7a32b16258f73798138adf02ccfee6370
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 13:45:41 2017 -0700
+
+    10 min commit
+
+:000000 100644 0000000... 39a6f1d... A	final/number6/Country.java
+:100644 100644 0763d1d... bb63041... M	final/number6/FilterUtil.java
+:000000 100644 0000000... a4df960... A	final/number6/FilterUtilTester.java
+:000000 100644 0000000... ab900e3... A	final/number7/AllFilter.java
+:000000 100644 0000000... be2f22a... A	final/number7/AllFilterTester.java
+:000000 100644 0000000... 39a6f1d... A	final/number7/Country.java
+:000000 100644 0000000... f75f869... A	final/number7/Filter.java
+:000000 100644 0000000... bb63041... A	final/number7/FilterUtil.java
+:000000 100644 0000000... a4df960... A	final/number7/FilterUtilTester.java
+
+commit b6d9d65a1ab5668e6b6f9b5269bfc7405a084c91
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 13:35:41 2017 -0700
+
+    10 min commit
+
+:100644 100644 93b9b2c... ab900e3... M	final/number5/AllFilter.java
+:100644 100644 7c30a26... be2f22a... M	final/number5/AllFilterTester.java
+:000000 100644 0000000... ab900e3... A	final/number6/AllFilter.java
+:000000 100644 0000000... be2f22a... A	final/number6/AllFilterTester.java
+:000000 100644 0000000... f75f869... A	final/number6/Filter.java
+:000000 100644 0000000... 0763d1d... A	final/number6/FilterUtil.java
+
+commit b928c52b61e9b8cb84a92336f1e1be7490588b92
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 13:25:41 2017 -0700
+
+    10 min commit
+
+:000000 100644 0000000... 93b9b2c... A	final/number5/AllFilter.java
+:000000 100644 0000000... 7c30a26... A	final/number5/AllFilterTester.java
+:000000 100644 0000000... f75f869... A	final/number5/Filter.java
+:000000 100644 0000000... 0763d1d... A	final/number5/FilterUtil.java
+
+commit 453ad735a4841d1a416b19b680b1f47b7ebca9a6
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 13:15:41 2017 -0700
+
+    10 min commit
+
+:100644 100644 f5c240f... df77722... M	final/number4.violet
+:000000 100644 0000000... 5174142... A	final/sequence.png
+
+commit 3c5c45d0bedb827a08f965477f54fa17472679dc
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 13:05:40 2017 -0700
+
+    10 min commit
+
+:100644 100644 ec96daa... c3c9829... M	final/number3/graphed2/Graph.java
+:100644 100644 fde7bd1... f857704... M	final/number3/graphed2/GraphFrame.java
+:000000 100644 0000000... f5c240f... A	final/number4.violet
+
+commit 509754971ebeac5312916c888020bd85c8f61871
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 12:55:40 2017 -0700
+
+    10 min commit
+
+:100644 100644 e69de29... b278f6a... M	final/number2/observer.txt
+:000000 100644 0000000... dbc55aa... A	final/number3/graphed2/AbstractEdge.java
+:000000 100644 0000000... c8091ed... A	final/number3/graphed2/CircleNode.java
+:000000 100644 0000000... bcbdec1... A	final/number3/graphed2/Edge.java
+:000000 100644 0000000... 26a90b2... A	final/number3/graphed2/EnumEditor.java
+:000000 100644 0000000... 6170bf9... A	final/number3/graphed2/FormLayout.java
+:000000 100644 0000000... ec96daa... A	final/number3/graphed2/Graph.java
+:000000 100644 0000000... fde7bd1... A	final/number3/graphed2/GraphFrame.java
+:000000 100644 0000000... 1ba8df0... A	final/number3/graphed2/GraphPanel.java
+:000000 100644 0000000... 05a5083... A	final/number3/graphed2/LineEdge.java
+:000000 100644 0000000... bfb9509... A	final/number3/graphed2/LineStyle.java
+:000000 100644 0000000... fe4540c... A	final/number3/graphed2/Node.java
+:000000 100644 0000000... f265d24... A	final/number3/graphed2/PointNode.java
+:000000 100644 0000000... 7f4490e... A	final/number3/graphed2/PropertySheet.java
+:000000 100644 0000000... af68ee4... A	final/number3/graphed2/SimpleGraph.java
+:000000 100644 0000000... bcc30f0... A	final/number3/graphed2/SimpleGraphEditor.java
+:000000 100644 0000000... fb67fc8... A	final/number3/graphed2/ToolBar.java
+
+commit 84472af87cc9b08c2052c1dad82d4344ed4b25bc
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 12:45:40 2017 -0700
+
+    10 min commit
+
+:100644 100644 4c72e59... 6718182... M	final/number1/graphed2/Graph.java
+:000000 100644 0000000... e69de29... A	final/number2/observer.txt
+
+commit 21bb70cc9923f9eb5553d2979e1d9027f15a178a
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 12:35:40 2017 -0700
+
+    10 min commit
+
+:100644 100644 0f93fd8... 4c72e59... M	final/number1/graphed2/Graph.java
+:100644 100644 96607e0... fde7bd1... M	final/number1/graphed2/GraphFrame.java
+
+commit ef08248523754fd6b38b00d0f1bd06fbb96f2f9e
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 12:25:39 2017 -0700
+
+    10 min commit
+
+:000000 100644 0000000... dbc55aa... A	final/number1/graphed2/AbstractEdge.java
+:000000 100644 0000000... c8091ed... A	final/number1/graphed2/CircleNode.java
+:000000 100644 0000000... bcbdec1... A	final/number1/graphed2/Edge.java
+:000000 100644 0000000... 26a90b2... A	final/number1/graphed2/EnumEditor.java
+:000000 100644 0000000... 6170bf9... A	final/number1/graphed2/FormLayout.java
+:000000 100644 0000000... 0f93fd8... A	final/number1/graphed2/Graph.java
+:000000 100644 0000000... 96607e0... A	final/number1/graphed2/GraphFrame.java
+:000000 100644 0000000... 1ba8df0... A	final/number1/graphed2/GraphPanel.java
+:000000 100644 0000000... 05a5083... A	final/number1/graphed2/LineEdge.java
+:000000 100644 0000000... bfb9509... A	final/number1/graphed2/LineStyle.java
+:000000 100644 0000000... fe4540c... A	final/number1/graphed2/Node.java
+:000000 100644 0000000... f265d24... A	final/number1/graphed2/PointNode.java
+:000000 100644 0000000... 7f4490e... A	final/number1/graphed2/PropertySheet.java
+:000000 100644 0000000... af68ee4... A	final/number1/graphed2/SimpleGraph.java
+:000000 100644 0000000... bcc30f0... A	final/number1/graphed2/SimpleGraphEditor.java
+:000000 100644 0000000... fb67fc8... A	final/number1/graphed2/ToolBar.java
+
+commit 60b1cbb96489472b427eb1e983dac5935bd89fd3
+Author: TylerWasniowski <TylerWasniowski@gmail.com>
+Date:   Mon May 22 12:15:18 2017 -0700
+
+    Before final
+
+:000000 100644 0000000... 2f87685... A	lab20/LabeledPoint.java
+:000000 100644 0000000... d86f300... A	lab20/Point.java
+:000000 100644 0000000... 4c7c1a3... A	lab24/Counter.java
+:000000 100644 0000000... ccfd576... A	lab24/Primes.java
+:000000 100644 0000000... 2e2619c... A	lab24/PrimesCounter.java
+:000000 100644 0000000... 228ff83... A	lab24/ProducePrimes.java
